@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 17)
+project(alg_lib)
+
+set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
+
+list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program")
+foreach(APP_DIR ${APP_DIRS})
+    file(GLOB APP_SUBDIRS ${APP_DIR}/*)
+    foreach(APP_SUBDIR ${APP_SUBDIRS})
+        if(IS_DIRECTORY ${APP_SUBDIR})
+            get_filename_component(COMPONENT_NAME ${APP_SUBDIR} NAME)
+            string(REPLACE " " "_" COMPONENT_NAME ${COMPONENT_NAME})
+            string(REPLACE "-" "_" COMPONENT_NAME ${COMPONENT_NAME})
+
+            get_filename_component(COMPONENT_GROUP ${APP_DIR} NAME)
+            string(REPLACE " " "_" COMPONENT_GROUP ${COMPONENT_GROUP})
+            string(REPLACE "-" "_" COMPONENT_GROUP ${COMPONENT_GROUP})
+
+            set(TARGET_NAME ${COMPONENT_GROUP}_${COMPONENT_NAME})
+            string(TOUPPER ${TARGET_NAME} TARGET_NAME)
+            message(STATUS target:${TARGET_NAME})
+            message(STATUS component:${COMPONENT_NAME})
+            set(${TARGET_NAME} ${CMAKE_PROJECT_NAME}_${COMPONENT_GROUP}_${COMPONENT_NAME})
+        endif()
+    endforeach()
+endforeach()
+
+foreach(APP_DIR ${APP_DIRS})
+    file(GLOB APP_SUBDIRS ${APP_DIR}/*)
+    foreach(APP_SUBDIR ${APP_SUBDIRS})
+        if(IS_DIRECTORY ${APP_SUBDIR})
+            get_filename_component(COMPONENT_NAME ${APP_SUBDIR} NAME)
+            string(REPLACE " " "_" COMPONENT_NAME ${COMPONENT_NAME})
+            string(REPLACE "-" "_" COMPONENT_NAME ${COMPONENT_NAME})
+
+            get_filename_component(COMPONENT_GROUP ${APP_DIR} NAME)
+            string(REPLACE " " "_" COMPONENT_GROUP ${COMPONENT_GROUP})
+            string(REPLACE "-" "_" COMPONENT_GROUP ${COMPONENT_GROUP})
+
+            set(TARGET_NAME ${CMAKE_PROJECT_NAME}_${COMPONENT_GROUP}_${COMPONENT_NAME})
+            add_subdirectory(${APP_SUBDIR})
+        endif()
+    endforeach()
+endforeach()
+
