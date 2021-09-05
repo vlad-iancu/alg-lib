@@ -1,0 +1,23 @@
+#ifndef ALG_LIB_DATA_STRUCTURE_EDGE_EDGE_H_
+#define ALG_LIB_DATA_STRUCTURE_EDGE_EDGE_H_
+
+#include <fstream>
+#include <memory>
+
+namespace graph
+{
+    struct Edge
+    {
+        int from;
+        int to;
+
+        virtual void read(std::istream &input)
+        {
+            input >> from >> to;
+        }
+    };
+
+    typedef std::shared_ptr<Edge> EdgePtr;
+    typedef std::shared_ptr<const Edge> EdgeCptr;
+} // namespace graph
+#endif
