@@ -15,7 +15,7 @@ namespace graph
         Graph(const Graph &other) = delete;
         Graph &operator=(const Graph &other) = delete;
     public:
-        Graph(int node_count);
+        Graph(SizeG node_count);
         SizeG get_node_count();
         virtual std::vector<int> get_neighbors(int u) = 0;
     };
