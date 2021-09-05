@@ -4,3 +4,4 @@ target_include_directories(${TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc
 add_subdirectory(test)
 
 #Target specific code:
+#target_compile_options(${TARGET_NAME} PUBLIC "-fno-elide-constructors")
