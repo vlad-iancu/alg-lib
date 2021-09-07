@@ -15,6 +15,24 @@ namespace graph
         {
             input >> from >> to;
         }
+
+        virtual Edge reverse() const
+        {
+            Edge e;
+            e.to = from;
+            e.from = to;
+            return e;
+        }
+
+        bool operator==(const Edge &other)
+        {
+            return from == other.from && to == other.to;
+        }
+
+        bool operator!=(const Edge &other)
+        {
+            return !(*this == other);
+        }
     };
 
     typedef std::shared_ptr<Edge> EdgePtr;
