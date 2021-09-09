@@ -3,70 +3,71 @@
 
 #include <edge/readers/EdgeReader.hpp>
 #include <memory>
+#include <iostream>
 
 namespace graph
 {
-    template<typename TEdge>
     class EdgeInputIterator
     {
     private:
-        EdgeReaderPtr<TEdge> reader;
+        EdgeReaderPtr reader;
         bool can_read;
         EdgeInputIterator() = default;
     public:
         using iterator_category = std::input_iterator_tag;
         using difference_type = std::ptrdiff_t;
-        using value_type = TEdge;
-        using pointer = TEdge*;
-        using reference = TEdge&;
+        using value_type = Edge;
+        using pointer = EdgePtr;
+        using reference = value_type&;
 
-        explicit EdgeInputIterator(EdgeReaderPtr<TEdge> reader) :
+        explicit EdgeInputIterator(EdgeReaderPtr reader) :
             reader(reader),
             can_read(true)
-        {
-            (*this)++;
-        }
+        {}
 
         value_type operator*()
         {
-            return reader->current_edge();
+            return (*reader->current_edge());
         }
 
         pointer operator->()
         {
-            return &reader->current_edge();
+            return reader->current_edge();
         }
 
-        EdgeInputIterator<TEdge>& operator++()
+        EdgeInputIterator operator++()
         {
             can_read = reader->increment();
+           // std::cout << "can_read = " << can_read << std::endl;
             return *this;
         }
 
-        EdgeInputIterator<TEdge> operator++(int)
+        EdgeInputIterator operator++(int)
         {
-            EdgeInputIterator<TEdge> tmp(*this);
+          //  std::cout << "Incrementing the iterator: ";
+            EdgeInputIterator tmp(*this);
             can_read = reader->increment();
+          //  std::cout << "can_read = " << can_read << std::endl;
             return tmp;
         }
 
-        bool operator==(const EdgeInputIterator<TEdge>& it) const
+        bool operator==(const EdgeInputIterator& it) const
         {
             if (!can_read && !it.can_read)
                 return true;
             if (can_read != it.can_read)
                 return false;
-            return it.reader->current_edge() == reader->current_edge();
+            return (*it.reader->current_edge()) == (*reader->current_edge());
         }
 
-        bool operator!=(const EdgeInputIterator<TEdge>& it) const
+        bool operator!=(const EdgeInputIterator& it) const
         {
             return !(it == *this);
         }
 
-        static EdgeInputIterator<TEdge> end()
+        static EdgeInputIterator end()
         {
-            EdgeInputIterator<TEdge> it;
+            EdgeInputIterator it;
             it.can_read = false;
             return it;
         }

@@ -7,9 +7,9 @@
 
 int main()
 {
-    graph::EdgeReaderPtr<graph::Edge> reader = std::make_shared<graph::EdgeStreamReader<graph::Edge>>(std::cin);
-    graph::EdgeInputIterator<graph::Edge> it(reader);
-    while(it != graph::EdgeInputIterator<graph::Edge>::end())
+    graph::EdgeReaderPtr reader = std::make_shared<graph::EdgeStreamReader<graph::Edge>>(std::cin);
+    graph::EdgeInputIterator it(reader);
+    while(it != graph::EdgeInputIterator::end())
     {
         std::cout << "Here is the edge:" << (*it).from << " " << (*it).to << std::endl;
         it++;

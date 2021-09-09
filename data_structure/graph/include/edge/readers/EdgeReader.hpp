@@ -2,18 +2,26 @@
 #define ALG_LIB_DATA_STRUCTURE_EDGE_READER_PROVIDER_H_
 
 #include <memory>
-
+#include <edge/Edge.hpp>
 namespace graph
 {
-    template<typename TEdge>
     class EdgeReader
     {
     public:
         virtual bool increment() = 0;
-        virtual TEdge current_edge() const = 0;
+        virtual EdgePtr current_edge() const = 0;
     };
 
-    template <typename TEdge>
-    using EdgeReaderPtr = std::shared_ptr<EdgeReader<TEdge>>;
+    typedef std::shared_ptr<EdgeReader> EdgeReaderPtr;
+
+    class invalid_edge_count : std::exception
+    {
+    public:
+        virtual const char* what() const noexcept
+        {
+            return "The edge count must be a non-negative integer";
+        }
+    };
+
 }
 #endif

@@ -3,17 +3,19 @@
 
 #include <fstream>
 #include <memory>
+#include <graph/types.hpp>
 
 namespace graph
 {
     struct Edge
     {
-        int from;
-        int to;
-
-        virtual void read(std::istream &input)
+        Node from;
+        Node to;
+        Edge() = default;
+        Edge(Node from, Node to) : from(from), to(to) {}
+        virtual bool read(std::istream& input)
         {
-            input >> from >> to;
+            return static_cast<bool>(input >> from >> to);
         }
 
         virtual Edge reverse() const
@@ -24,18 +26,18 @@ namespace graph
             return e;
         }
 
-        bool operator==(const Edge &other)
+        bool operator==(const Edge& other) const
         {
             return from == other.from && to == other.to;
         }
 
-        bool operator!=(const Edge &other)
+        bool operator!=(const Edge& other) const
         {
             return !(*this == other);
         }
     };
 
     typedef std::shared_ptr<Edge> EdgePtr;
-    typedef std::shared_ptr<const Edge> EdgeCptr;
+    typedef std::shared_ptr<const Edge> EdgeCPtr;
 } // namespace graph
 #endif

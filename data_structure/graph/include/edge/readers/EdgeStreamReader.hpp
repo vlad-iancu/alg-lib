@@ -4,43 +4,74 @@
 #include <fstream>
 
 #include <edge/readers/EdgeReader.hpp>
+#include <graph/types.hpp>
 
 namespace graph
 {
+    class edge_stream_eof;
+
     template<typename TEdge>
-    class EdgeStreamReader : public EdgeReader<TEdge>
+    class EdgeStreamReader : public EdgeReader
     {
     private:
-        int count;
-        int read;
+        SizeE count;
+        SizeE read;
         std::istream& in;
-        TEdge edge;
+        EdgePtr edge;
+
     public:
-        EdgeStreamReader(std::istream& in, int count) :
+        EdgeStreamReader(std::istream& in, SizeE count) :
             in(in),
             count(count),
             read(0)
-        {}
+        {
+            
+            if (count < 0)
+                throw invalid_edge_count();
+            increment();
+        }
 
         explicit EdgeStreamReader(std::istream& in) :
             in(in),
             read(0)
         {
-            in >> count;
+            if (!(in >> count))
+            {
+                throw edge_stream_eof();
+            }
+            if (count <= 0)
+            {
+                throw invalid_edge_count();
+            }
+            increment();
         }
 
         bool increment()
         {
-            if(read >= count) return false;
-            edge.read(in);
+            if (read >= count) return false;
+            edge = std::make_shared<TEdge>();
+            bool could_read = edge->read(in);
+            if (!could_read)
+            {
+                throw edge_stream_eof();
+            }
             read++;
-            return read < count;
+            return read <= count;
         }
 
-        TEdge current_edge() const
+        EdgePtr current_edge() const
         {
             return edge;
         }
     };
+
+    class edge_stream_eof : std::exception
+    {
+        virtual const char* what() const noexcept
+        {
+            return "EdgeReader encountered EOF while trying to read edges";
+        }
+    };
+
 } //namespace graph
 #endif

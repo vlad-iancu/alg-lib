@@ -16,6 +16,9 @@ FetchContent_MakeAvailable(googletest)
 set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
 
+enable_testing()
+add_custom_target(tests ${CMAKE_CTEST_COMMAND} -V)
+
 list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program")
 foreach(APP_DIR ${APP_DIRS})
     file(GLOB APP_SUBDIRS ${APP_DIR}/*)
