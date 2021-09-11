@@ -7,8 +7,6 @@ namespace graph
 {
     AdjacencyList::AdjacencyList(SizeG node_count) : Graph(node_count)
     {
-        if(node_count <= 0)
-            throw invalid_size();
         G = new std::vector<Node>[node_count];
     }
 

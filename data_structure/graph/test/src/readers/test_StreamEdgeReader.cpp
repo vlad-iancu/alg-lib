@@ -38,7 +38,7 @@ namespace test
         {
             FAIL();
         }
-        catch (const graph::invalid_edge_count& e)
+        catch (const graph::invalid_edge_count &e)
         {
             SUCCEED();
         }
@@ -55,14 +55,23 @@ namespace test
             std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
             FAIL();
         }
-        catch (const graph::edge_stream_eof& e)
+        catch (const graph::edge_stream_eof &e)
         {
             SUCCEED();
         }
-        catch (const std::exception& e)
+        catch (const std::exception &e)
         {
             FAIL();
         }
+    }
+    TEST_F(EdgeStreamReaderTest, ZeroEdges)
+    {
+        std::ifstream in(get_path("ZeroCount.txt"));
+        EXPECT_NO_THROW(
+            {
+                std::vector<graph::EdgePtr> edges;
+                std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
+            });
     }
     TEST_F(EdgeStreamReaderTest, EmptyFile)
     {
@@ -74,11 +83,11 @@ namespace test
             std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
             FAIL();
         }
-        catch (const graph::edge_stream_eof& e)
+        catch (const graph::edge_stream_eof &e)
         {
             SUCCEED();
         }
-        catch (const std::exception& e)
+        catch (const std::exception &e)
         {
             FAIL();
         }

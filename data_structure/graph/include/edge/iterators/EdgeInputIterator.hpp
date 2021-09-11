@@ -18,7 +18,7 @@ namespace graph
 
         explicit EdgeInputIterator(EdgeReaderPtr reader) :
             reader(reader),
-            can_read(true)
+            can_read(reader->can_read())
         {}
 
         EdgePtr operator*()

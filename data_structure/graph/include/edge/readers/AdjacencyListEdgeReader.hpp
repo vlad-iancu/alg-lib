@@ -16,7 +16,7 @@ namespace graph
         Node current_node;
         std::vector<EdgePtr> neighbors;
         Node current_neighbor;
-
+        bool _can_read;
     public:
         explicit AdjacencyListEdgeReader
         (
@@ -24,14 +24,22 @@ namespace graph
             Node current_node = 0,
             Node current_neighbor = 0
         ) : G(G),
-            
             current_node(current_node),
             current_neighbor(current_neighbor)
-        {}
+        {
+            while(G.get_neighbor_edges(current_node).size() == 0 && current_node < G.get_node_count())
+                current_node++;
+
+            _can_read = current_node < G.get_node_count();
+            if(_can_read)
+            {
+                neighbors = G.get_neighbor_edges(current_node);
+            }
+        }
 
         bool increment() override
         {
-            if (current_neighbor == neighbors.size())
+            if (current_neighbor >= neighbors.size() - 1)
             {
                 current_node++;
                 current_neighbor = 0;
@@ -53,6 +61,11 @@ namespace graph
         EdgePtr current_edge() const override
         {
             return neighbors[current_neighbor];
+        }
+
+        bool can_read() const override
+        {
+            return _can_read;
         }
     };
 } //namespace graph

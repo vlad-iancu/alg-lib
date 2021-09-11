@@ -10,6 +10,7 @@ namespace graph
     public:
         virtual bool increment() = 0;
         virtual EdgePtr current_edge() const = 0;
+        virtual bool can_read() const = 0;
     };
 
     typedef std::shared_ptr<EdgeReader> EdgeReaderPtr;
