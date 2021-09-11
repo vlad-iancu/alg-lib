@@ -2,8 +2,22 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(alg_lib)
 
+option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" OFF)
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
+
+enable_testing()
+add_custom_target(tests ${CMAKE_CTEST_COMMAND} -V)
 
 list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program")
 foreach(APP_DIR ${APP_DIRS})
