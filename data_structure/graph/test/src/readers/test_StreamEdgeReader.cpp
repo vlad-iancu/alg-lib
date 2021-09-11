@@ -13,14 +13,15 @@ namespace test
     {
         std::string path = get_path("BaseCase.txt");
         std::ifstream in(path);
-        std::vector<graph::Edge> edges(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end());
+        std::vector<graph::EdgePtr> edges;
+        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
         EXPECT_EQ(5, edges.size());
 
-        EXPECT_EQ((edges[0]), graph::Edge(1, 2));
-        EXPECT_EQ((edges[1]), graph::Edge(3, 4));
-        EXPECT_EQ((edges[2]), graph::Edge(5, 6));
-        EXPECT_EQ((edges[3]), graph::Edge(-1, 7));
-        EXPECT_EQ((edges[4]), graph::Edge(3, 8));
+        EXPECT_EQ((*edges[0]), graph::Edge(1, 2));
+        EXPECT_EQ((*edges[1]), graph::Edge(3, 4));
+        EXPECT_EQ((*edges[2]), graph::Edge(5, 6));
+        EXPECT_EQ((*edges[3]), graph::Edge(-1, 7));
+        EXPECT_EQ((*edges[4]), graph::Edge(3, 8));
         in.close();
     }
     TEST_F(EdgeStreamReaderTest, NegativeEdgeCount)
@@ -29,14 +30,15 @@ namespace test
         std::ifstream in(path);
         try
         {
-            std::vector<graph::Edge> edges(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end());
+            std::vector<graph::EdgePtr> edges;
+            std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
             FAIL();
         }
         catch (const std::exception)
         {
             FAIL();
         }
-        catch (const graph::invalid_edge_count &e)
+        catch (const graph::invalid_edge_count& e)
         {
             SUCCEED();
         }
@@ -49,14 +51,15 @@ namespace test
             std::string path = get_path("BaseCase.txt");
             std::ifstream in(path);
             in.close();
-            std::vector<graph::Edge> edges(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end());
+            std::vector<graph::EdgePtr> edges;
+            std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
             FAIL();
         }
-        catch (const graph::edge_stream_eof &e)
+        catch (const graph::edge_stream_eof& e)
         {
             SUCCEED();
         }
-        catch(const std::exception &e)
+        catch (const std::exception& e)
         {
             FAIL();
         }
@@ -67,14 +70,15 @@ namespace test
         {
             std::string path = get_path("EmptyFile.txt");
             std::ifstream in(path);
-            std::vector<graph::Edge> edges(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end());
+            std::vector<graph::EdgePtr> edges;
+            std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), std::back_inserter(edges));
             FAIL();
         }
-        catch (const graph::edge_stream_eof &e)
+        catch (const graph::edge_stream_eof& e)
         {
             SUCCEED();
         }
-        catch(const std::exception &e)
+        catch (const std::exception& e)
         {
             FAIL();
         }

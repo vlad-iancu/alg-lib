@@ -32,11 +32,22 @@ namespace graph
         virtual void add_edge(Node u, Node v) = 0;
         virtual bool has_edge(Node u, Node v) const = 0;
         virtual void remove_edge(Node u, Node v) = 0;
+
+        virtual void insert_edge(EdgePtr edge) = 0;
     };
 
     typedef std::shared_ptr<Graph> GraphPtr;
 
     typedef std::shared_ptr<const Graph> GraphCPtr;
+
+    class invalid_size : std::exception
+    {
+    public:
+        virtual const char* what() const noexcept
+        {
+            return "N must be a non negative integer";
+        }
+    };
 
     class invalid_node : std::exception
     {

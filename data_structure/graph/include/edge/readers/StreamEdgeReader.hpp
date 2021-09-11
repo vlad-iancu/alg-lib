@@ -11,7 +11,7 @@ namespace graph
     class edge_stream_eof;
 
     template<typename TEdge>
-    class EdgeStreamReader : public EdgeReader
+    class StreamEdgeReader : public EdgeReader
     {
     private:
         SizeE count;
@@ -20,18 +20,18 @@ namespace graph
         EdgePtr edge;
 
     public:
-        EdgeStreamReader(std::istream& in, SizeE count) :
+        StreamEdgeReader(std::istream& in, SizeE count) :
             in(in),
             count(count),
             read(0)
         {
-            
+
             if (count < 0)
                 throw invalid_edge_count();
             increment();
         }
 
-        explicit EdgeStreamReader(std::istream& in) :
+        explicit StreamEdgeReader(std::istream& in) :
             in(in),
             read(0)
         {

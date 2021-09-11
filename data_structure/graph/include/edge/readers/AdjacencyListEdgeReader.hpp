@@ -9,7 +9,7 @@
 namespace graph
 {
     template<typename TEdge>
-    class EdgeAdjacencyListReader : public EdgeReader
+    class AdjacencyListEdgeReader : public EdgeReader
     {
     private:
         const AdjacencyList& G;
@@ -18,7 +18,7 @@ namespace graph
         Node current_neighbor;
 
     public:
-        explicit EdgeAdjacencyListReader
+        explicit AdjacencyListEdgeReader
         (
             const AdjacencyList& G,
             Node current_node = 0,

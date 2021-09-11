@@ -2,14 +2,14 @@
 #define ALG_LIB_DATA_STRUCTURE_GRAPH_EDGE_READERS_H_
 
 #include <edge/iterators/EdgeInputIterator.hpp>
-#include <edge/readers/EdgeStreamReader.hpp>
+#include <edge/readers/StreamEdgeReader.hpp>
 
 namespace graph
 {
     template<typename TEdge>
     EdgeInputIterator read_edges(std::istream& in)
     {
-        return EdgeInputIterator(std::make_shared<EdgeStreamReader<TEdge>>(in));
+        return EdgeInputIterator(std::make_shared<StreamEdgeReader<TEdge>>(in));
     }
 }
 

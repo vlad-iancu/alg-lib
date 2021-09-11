@@ -4,33 +4,29 @@
 #include <edge/readers/EdgeReader.hpp>
 #include <memory>
 #include <iostream>
+#include <iterator>
 
 namespace graph
 {
-    class EdgeInputIterator
+    class EdgeInputIterator: public std::iterator<std::input_iterator_tag, EdgePtr>
     {
     private:
         EdgeReaderPtr reader;
         bool can_read;
         EdgeInputIterator() = default;
     public:
-        using iterator_category = std::input_iterator_tag;
-        using difference_type = std::ptrdiff_t;
-        using value_type = Edge;
-        using pointer = EdgePtr;
-        using reference = value_type&;
 
         explicit EdgeInputIterator(EdgeReaderPtr reader) :
             reader(reader),
             can_read(true)
         {}
 
-        value_type operator*()
+        EdgePtr operator*()
         {
-            return (*reader->current_edge());
+            return reader->current_edge();
         }
 
-        pointer operator->()
+        EdgePtr operator->()
         {
             return reader->current_edge();
         }

@@ -13,9 +13,11 @@ namespace graph
         std::vector<Node>* G;
         AdjacencyList& operator=(const AdjacencyList& other) = delete;
         explicit AdjacencyList(const AdjacencyList& other) = delete;
+        
     protected:
         void valid_nodes(Node u, Node v) const;
         void valid_node(Node u) const;
+
     public:
         explicit AdjacencyList(SizeG node_count);
         explicit AdjacencyList(AdjacencyList&& source);
@@ -30,6 +32,8 @@ namespace graph
         virtual void add_edge(Node u, Node v);
         virtual bool has_edge(Node u, Node v) const;
         virtual void remove_edge(Node u, Node v);
+
+        virtual void insert_edge(EdgePtr edge);
     };
 }
 

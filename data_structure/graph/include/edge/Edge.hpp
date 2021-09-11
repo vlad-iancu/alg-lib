@@ -18,6 +18,11 @@ namespace graph
             return static_cast<bool>(input >> from >> to);
         }
 
+        virtual void write(std::ostream& output)
+        {
+            output << from << to;
+        }
+
         virtual Edge reverse() const
         {
             Edge e;
