@@ -178,7 +178,7 @@ namespace test
             },
             graph::invalid_node);
     }
-    TEST_F(AdjacencyListTest, GetEdges)
+    TEST_F(AdjacencyListTest, GetEdgesBaseCase)
     {
         std::ifstream in(get_path("BaseCase.txt"));
         graph::SizeG count;
@@ -212,5 +212,12 @@ namespace test
                 graph::Edge{7, 1},
                 graph::Edge{7, 6}
             ));
+    }
+
+    TEST_F(AdjacencyListTest, GetEdgesIsolatedGraph)
+    {
+        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(5);
+        std::vector<graph::EdgePtr> edges(graph->edge_iterator(), graph::EdgeInputIterator::end());
+        EXPECT_EQ(edges.size(), 0);
     }
 } //namespace test

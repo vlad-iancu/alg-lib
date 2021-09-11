@@ -26,7 +26,6 @@ namespace graph
                                                           read(0),
                                                           _can_read(true)
         {
-
             if (count < 0)
             {
                 _can_read = false;

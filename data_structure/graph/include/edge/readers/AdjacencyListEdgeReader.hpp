@@ -27,7 +27,7 @@ namespace graph
             current_node(current_node),
             current_neighbor(current_neighbor)
         {
-            while(G.get_neighbor_edges(current_node).size() == 0 && current_node < G.get_node_count())
+            while(current_node < G.get_node_count() && G.get_neighbor_edges(current_node).size() == 0)
                 current_node++;
 
             _can_read = current_node < G.get_node_count();
