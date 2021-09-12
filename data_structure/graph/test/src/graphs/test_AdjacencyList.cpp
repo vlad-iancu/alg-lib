@@ -7,8 +7,7 @@
 
 #include <graph/AdjacencyList.hpp>
 
-#include <edge/iterators/readers.hpp>
-#include <edge/iterators/writers.hpp>
+#include <edge/iterators.hpp>
 
 namespace test
 {
@@ -194,24 +193,23 @@ namespace test
             {
                 return *edge;
             });
-        for(auto ed : result)
+        for (auto ed : result)
         {
             std::cout << "(" << ed.from << "," << ed.to << ")" << std::endl;
         }
         EXPECT_THAT(result,
-            testing::UnorderedElementsAre(
-                graph::Edge{0, 2},
-                graph::Edge{0, 5},
-                graph::Edge{0, 4},
-                graph::Edge{1, 4},
-                graph::Edge{1, 5},
-                graph::Edge{2, 3},
-                graph::Edge{2, 4},
-                graph::Edge{3, 6},
-                graph::Edge{4, 5},
-                graph::Edge{7, 1},
-                graph::Edge{7, 6}
-            ));
+                    testing::UnorderedElementsAre(
+                        graph::Edge{0, 2},
+                        graph::Edge{0, 5},
+                        graph::Edge{0, 4},
+                        graph::Edge{1, 4},
+                        graph::Edge{1, 5},
+                        graph::Edge{2, 3},
+                        graph::Edge{2, 4},
+                        graph::Edge{3, 6},
+                        graph::Edge{4, 5},
+                        graph::Edge{7, 1},
+                        graph::Edge{7, 6}));
     }
 
     TEST_F(AdjacencyListTest, GetEdgesIsolatedGraph)
@@ -219,5 +217,33 @@ namespace test
         graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(5);
         std::vector<graph::EdgePtr> edges(graph->edge_iterator(), graph::EdgeInputIterator::end());
         EXPECT_EQ(edges.size(), 0);
+    }
+
+    TEST_F(AdjacencyListTest, EdgeIterable)
+    {
+        std::ifstream in(get_path("BaseCase2.txt"));
+        graph::SizeG count;
+        in >> count;
+        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
+        std::vector<graph::Edge> edges;
+
+        std::transform(
+            graph->edges().begin(),
+            graph->edges().end(),
+            std::back_inserter(edges),
+            [](const graph::EdgePtr &edge)
+            { return *edge; });
+        EXPECT_THAT(
+            edges,
+            testing::UnorderedElementsAre(
+                graph::Edge{0, 4},
+                graph::Edge{0, 2},
+                graph::Edge{0, 5},
+                graph::Edge{1, 4},
+                graph::Edge{1, 5},
+                graph::Edge{2, 4},
+                graph::Edge{2, 3},
+                graph::Edge{4, 5}));
     }
 } //namespace test

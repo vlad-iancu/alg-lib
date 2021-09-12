@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <readers/EdgeStreamReaderTest.hpp>
 
-#include <edge/iterators/readers.hpp>
+#include <edge/iterators.hpp>
 #include <edge/Edge.hpp>
 #include <graph/types.hpp>
 

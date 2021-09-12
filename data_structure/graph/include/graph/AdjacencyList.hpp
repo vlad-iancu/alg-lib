@@ -10,18 +10,18 @@ namespace graph
     class AdjacencyList : public Graph
     {
     private:
-        std::vector<Node>* G;
-        AdjacencyList& operator=(const AdjacencyList& other) = delete;
-        explicit AdjacencyList(const AdjacencyList& other) = delete;
-        
+        std::vector<Node> *G;
+        AdjacencyList &operator=(const AdjacencyList &other) = delete;
+        explicit AdjacencyList(const AdjacencyList &other) = delete;
+
     protected:
         void valid_nodes(Node u, Node v) const;
         void valid_node(Node u) const;
 
     public:
         explicit AdjacencyList(SizeG node_count);
-        explicit AdjacencyList(AdjacencyList&& source);
-        AdjacencyList& operator=(AdjacencyList&& source);
+        explicit AdjacencyList(AdjacencyList &&source);
+        AdjacencyList &operator=(AdjacencyList &&source);
         ~AdjacencyList();
 
         //Graph overrides

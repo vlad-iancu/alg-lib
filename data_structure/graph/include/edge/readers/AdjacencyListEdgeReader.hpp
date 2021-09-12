@@ -8,30 +8,29 @@
 
 namespace graph
 {
-    template<typename TEdge>
+    template <typename TEdge>
     class AdjacencyListEdgeReader : public EdgeReader
     {
     private:
-        const AdjacencyList& G;
+        const AdjacencyList &G;
         Node current_node;
         std::vector<EdgePtr> neighbors;
         Node current_neighbor;
         bool _can_read;
+
     public:
-        explicit AdjacencyListEdgeReader
-        (
-            const AdjacencyList& G,
+        explicit AdjacencyListEdgeReader(
+            const AdjacencyList &G,
             Node current_node = 0,
-            Node current_neighbor = 0
-        ) : G(G),
-            current_node(current_node),
-            current_neighbor(current_neighbor)
+            Node current_neighbor = 0) : G(G),
+                                         current_node(current_node),
+                                         current_neighbor(current_neighbor)
         {
-            while(current_node < G.get_node_count() && G.get_neighbor_edges(current_node).size() == 0)
+            while (current_node < G.get_node_count() && G.get_neighbor_edges(current_node).size() == 0)
                 current_node++;
 
             _can_read = current_node < G.get_node_count();
-            if(_can_read)
+            if (_can_read)
             {
                 neighbors = G.get_neighbor_edges(current_node);
             }
@@ -45,7 +44,7 @@ namespace graph
                 current_neighbor = 0;
                 if (current_node >= G.get_node_count())
                     return false;
-                while((neighbors = G.get_neighbor_edges(current_node)).empty())
+                while (current_node < G.get_node_count() && (neighbors = G.get_neighbor_edges(current_node)).empty())
                 {
                     current_node++;
                 }

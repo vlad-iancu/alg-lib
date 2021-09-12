@@ -1,4 +1,5 @@
 #include <graph/Graph.hpp>
+#include <edge/iterators.hpp>
 
 namespace graph
 {
@@ -9,4 +10,8 @@ namespace graph
     }
     SizeG Graph::get_node_count() const { return node_count; }
     Graph::Graph(Graph &&source) : node_count(std::move(source.node_count)) {}
+    EdgeIterable Graph::edges() const
+    {
+        return EdgeIterable(edge_iterator());
+    }
 } //namespace graph

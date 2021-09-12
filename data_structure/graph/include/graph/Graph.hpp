@@ -6,6 +6,7 @@
 
 #include <graph/types.hpp>
 #include <edge/iterators/EdgeInputIterator.hpp>
+#include <edge/iterators/EdgeIterable.hpp>
 #include <edge/Edge.hpp>
 
 namespace graph
@@ -33,8 +34,12 @@ namespace graph
         virtual bool has_edge(Node u, Node v) const = 0;
         virtual void remove_edge(Node u, Node v) = 0;
 
+        EdgeIterable edges() const;
         virtual void insert_edge(EdgePtr edge) = 0;
     };
+
+
+    
 
     typedef std::shared_ptr<Graph> GraphPtr;
 
