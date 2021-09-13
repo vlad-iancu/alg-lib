@@ -11,6 +11,7 @@
 
 namespace test
 {
+
     TEST_F(AdjacencyListTest, BaseCase)
     {
         std::ifstream in(get_path("BaseCase.txt"));
@@ -60,6 +61,7 @@ namespace test
                 graph::GraphPtr G = std::make_shared<graph::AdjacencyList>(n);
             },
             graph::invalid_size);
+        in.close();
     }
 
     TEST_F(AdjacencyListTest, AddEdgeBaseCase)
@@ -210,6 +212,7 @@ namespace test
                         graph::Edge{4, 5},
                         graph::Edge{7, 1},
                         graph::Edge{7, 6}));
+        in.close();
     }
 
     TEST_F(AdjacencyListTest, GetEdgesIsolatedGraph)
@@ -245,5 +248,79 @@ namespace test
                 graph::Edge{2, 4},
                 graph::Edge{2, 3},
                 graph::Edge{4, 5}));
+        in.close();
+    }
+    TEST_F(AdjacencyListTest, GetInteriorEdgesBaseCase)
+    {
+        std::ifstream in(get_path("BaseCase2.txt"));
+        graph::SizeG count;
+        in >> count;
+        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
+
+        EXPECT_EQ(0, graph->get_interior_edges(0).size());
+        EXPECT_EQ(0, graph->get_interior_edges(1).size());
+
+        EXPECT_THAT(
+            graph->get_interior_edges(2),
+            testing::UnorderedElementsAre(
+                testing::Pointee(testing::Eq(graph::Edge{0, 2}))));
+
+        EXPECT_THAT(
+            graph->get_interior_edges(3),
+            testing::UnorderedElementsAre(
+                testing::Pointee(testing::Eq(graph::Edge{2, 3}))));
+
+        EXPECT_THAT(
+            graph->get_interior_edges(4),
+            testing::UnorderedElementsAre(
+                testing::Pointee(testing::Eq(graph::Edge{0, 4})),
+                testing::Pointee(testing::Eq(graph::Edge{1, 4})),
+                testing::Pointee(testing::Eq(graph::Edge{2, 4}))));
+
+        EXPECT_THAT(
+            graph->get_interior_edges(5),
+            testing::UnorderedElementsAre(
+                testing::Pointee(testing::Eq(graph::Edge{0, 5})),
+                testing::Pointee(testing::Eq(graph::Edge{1, 5})),
+                testing::Pointee(testing::Eq(graph::Edge{4, 5}))));
+
+        in.close();
+    }
+    TEST_F(AdjacencyListTest, GetInteriorEdgesIsolatedGraph)
+    {
+        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(3);
+        EXPECT_EQ(0, graph->get_interior_edges(0).size());
+        EXPECT_EQ(0, graph->get_interior_edges(1).size());
+        EXPECT_EQ(0, graph->get_interior_edges(2).size());
+    }
+    TEST_F(AdjacencyListTest, GetInteriorNeighborsBaseCase)
+    {
+        std::ifstream in(get_path("BaseCase2.txt"));
+        graph::SizeG count;
+        in >> count;
+        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
+        EXPECT_EQ(0, graph->get_interior_neighbors(0).size());
+        EXPECT_EQ(0, graph->get_interior_neighbors(1).size());
+        EXPECT_THAT(
+            graph->get_interior_neighbors(2),
+            testing::UnorderedElementsAre(0));
+        EXPECT_THAT(
+            graph->get_interior_neighbors(3),
+            testing::UnorderedElementsAre(2));
+        EXPECT_THAT(
+            graph->get_interior_neighbors(4),
+            testing::UnorderedElementsAre(0, 1, 2));
+        EXPECT_THAT(
+            graph->get_interior_neighbors(5),
+            testing::UnorderedElementsAre(0, 1, 4));
+    }
+    TEST_F(AdjacencyListTest, GetInteriorNeighborsIsolatedGraph)
+    {
+        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(3);
+        EXPECT_EQ(0, graph->get_interior_neighbors(0).size());
+        EXPECT_EQ(0, graph->get_interior_neighbors(1).size());
+        EXPECT_EQ(0, graph->get_interior_neighbors(2).size());
     }
 } //namespace test

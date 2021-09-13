@@ -10,7 +10,7 @@ namespace graph
         G = new std::vector<Node>[node_count];
     }
 
-    AdjacencyList::AdjacencyList(AdjacencyList&& source) : Graph(std::move(source.node_count))
+    AdjacencyList::AdjacencyList(AdjacencyList &&source) : Graph(std::move(source.node_count))
     {
         G = source.G;
         source.G = nullptr;
@@ -21,7 +21,7 @@ namespace graph
         delete[] G;
     }
 
-    AdjacencyList& AdjacencyList::operator=(AdjacencyList&& source)
+    AdjacencyList &AdjacencyList::operator=(AdjacencyList &&source)
     {
         if (this != &source)
         {
@@ -33,12 +33,6 @@ namespace graph
         }
 
         return *this;
-    }
-
-    std::vector<Node> AdjacencyList::get_neighbors(Node u) const
-    {
-        valid_node(u);
-        return G[u];
     }
 
     EdgeInputIterator AdjacencyList::edge_iterator() const
@@ -63,6 +57,12 @@ namespace graph
             throw invalid_node();
     }
 
+    std::vector<Node> AdjacencyList::get_neighbors(Node u) const
+    {
+        valid_node(u);
+        return G[u];
+    }
+
     std::vector<EdgePtr> AdjacencyList::get_neighbor_edges(Node u) const
     {
         valid_node(u);
@@ -71,9 +71,45 @@ namespace graph
             G[u].begin(),
             G[u].end(),
             std::back_inserter(result),
-            [u](const int& v) {
+            [u](const int &v)
+            {
                 return std::make_shared<Edge>(u, v);
             });
+        return result;
+    }
+
+    std::vector<EdgePtr> AdjacencyList::get_interior_edges(Node u) const
+    {
+        valid_node(u);
+        std::vector<EdgePtr> result;
+        for (int v = 0; v < node_count; v++)
+        {
+            if (has_edge(v, u))
+            {
+                std::cout << std::endl
+                          << "Edge between " << v << " " << u << std::endl;
+                result.push_back(std::make_shared<Edge>(v, u));
+            }
+            else
+            {
+                std::cout << std::endl
+                          << "No Edge between " << v << " " << u << std::endl;
+            }
+        }
+        return result;
+    }
+
+    std::vector<Node> AdjacencyList::get_interior_neighbors(Node u) const
+    {
+        valid_node(u);
+        std::vector<Node> result;
+        for (int v = 0; v < node_count; v++)
+        {
+            if (has_edge(v, u))
+            {
+                result.push_back(v);
+            }
+        }
         return result;
     }
 
@@ -83,11 +119,6 @@ namespace graph
         if (std::find(G[u].begin(), G[u].end(), v) != G[u].end())
             throw edge_already_exists();
         G[u].push_back(v);
-    }
-
-    void AdjacencyList::insert_edge(EdgePtr edge)
-    {
-        add_edge(edge->from, edge->to);
     }
 
     bool AdjacencyList::has_edge(Node u, Node v) const
@@ -103,4 +134,10 @@ namespace graph
             throw edge_not_found();
         G[u].erase(std::find(G[u].begin(), G[u].end(), v));
     }
+
+    void AdjacencyList::insert_edge(EdgePtr edge)
+    {
+        add_edge(edge->from, edge->to);
+    }
+
 }

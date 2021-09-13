@@ -27,13 +27,17 @@ namespace graph
         SizeG get_node_count() const;
 
         virtual std::vector<Node> get_neighbors(Node u) const = 0;
+        virtual std::vector<Node> get_interior_neighbors(Node u) const = 0;
+
         virtual std::vector<EdgePtr> get_neighbor_edges(Node u) const = 0;
+        virtual std::vector<EdgePtr> get_interior_edges(Node u) const = 0;
+
         virtual EdgeInputIterator edge_iterator() const = 0;
 
         virtual void add_edge(Node u, Node v) = 0;
         virtual bool has_edge(Node u, Node v) const = 0;
         virtual void remove_edge(Node u, Node v) = 0;
-
+        
         EdgeIterable edges() const;
         virtual void insert_edge(EdgePtr edge) = 0;
     };

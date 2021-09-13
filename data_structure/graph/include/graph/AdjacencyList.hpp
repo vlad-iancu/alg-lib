@@ -26,7 +26,11 @@ namespace graph
 
         //Graph overrides
         virtual std::vector<Node> get_neighbors(Node u) const;
+        virtual std::vector<Node> get_interior_neighbors(Node u) const;
+
         virtual std::vector<EdgePtr> get_neighbor_edges(Node u) const;
+        virtual std::vector<EdgePtr> get_interior_edges(Node u) const;
+        
         virtual EdgeInputIterator edge_iterator() const;
 
         virtual void add_edge(Node u, Node v);
