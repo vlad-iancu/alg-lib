@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include <graphs/AdjacencyListTest.hpp>
+#include <graphs/GraphTest.hpp>
 
 #include <fstream>
 
@@ -12,13 +12,15 @@
 namespace test
 {
 
-    TEST_F(AdjacencyListTest, BaseCase)
+    TYPED_TEST_SUITE_P(GraphTest);
+
+    TYPED_TEST_P(GraphTest, BaseCase)
     {
-        std::ifstream in(get_path("BaseCase.txt"));
+        std::ifstream in(this->get_path("BaseCase.txt"));
         graph::SizeG n;
         in >> n;
 
-        graph::GraphPtr adjacencyList = std::make_shared<graph::AdjacencyList>(n);
+        graph::GraphPtr adjacencyList = std::make_shared<TypeParam>(n);
         std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(adjacencyList));
 
         EXPECT_EQ(3, adjacencyList->get_neighbors(0).size());
@@ -51,22 +53,22 @@ namespace test
         in.close();
     }
 
-    TEST_F(AdjacencyListTest, EmptyGraph)
+    TYPED_TEST_P(GraphTest, EmptyGraph)
     {
-        std::ifstream in(get_path("ZeroNode.txt"));
+        std::ifstream in(this->get_path("ZeroNode.txt"));
         graph::SizeG n;
         in >> n;
         EXPECT_THROW(
             {
-                graph::GraphPtr G = std::make_shared<graph::AdjacencyList>(n);
+                graph::GraphPtr G = std::make_shared<TypeParam>(n);
             },
             graph::invalid_size);
         in.close();
     }
 
-    TEST_F(AdjacencyListTest, AddEdgeBaseCase)
+    TYPED_TEST_P(GraphTest, AddEdgeBaseCase)
     {
-        graph::GraphPtr G = std::make_shared<graph::AdjacencyList>(2);
+        graph::GraphPtr G = std::make_shared<TypeParam>(2);
         G->add_edge(0, 1);
         G->add_edge(1, 0);
         EXPECT_TRUE(G->has_edge(0, 1));
@@ -75,11 +77,11 @@ namespace test
         EXPECT_EQ(1, G->get_neighbors(0).size());
     }
 
-    TEST_F(AdjacencyListTest, AddEdgeNegativeNode)
+    TYPED_TEST_P(GraphTest, AddEdgeNegativeNode)
     {
         EXPECT_THROW(
             {
-                graph::GraphPtr G = std::make_shared<graph::AdjacencyList>(2);
+                graph::GraphPtr G = std::make_shared<TypeParam>(2);
                 G->add_edge(0, -1);
                 G->add_edge(1, 0);
                 EXPECT_TRUE(G->has_edge(0, 1));
@@ -90,33 +92,33 @@ namespace test
             graph::invalid_node);
     }
 
-    TEST_F(AdjacencyListTest, AddEdgeNodeOverflow)
+    TYPED_TEST_P(GraphTest, AddEdgeNodeOverflow)
     {
         EXPECT_THROW(
             {
-                graph::GraphPtr G = std::make_shared<graph::AdjacencyList>(2);
+                graph::GraphPtr G = std::make_shared<TypeParam>(2);
                 G->add_edge(2, 1);
             },
             graph::invalid_node);
     }
 
-    TEST_F(AdjacencyListTest, HasExistingEdge)
+    TYPED_TEST_P(GraphTest, HasExistingEdge)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(2);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(2);
         graph->add_edge(0, 1);
         EXPECT_TRUE(graph->has_edge(0, 1));
     }
 
-    TEST_F(AdjacencyListTest, HasNonExistingEdge)
+    TYPED_TEST_P(GraphTest, HasNonExistingEdge)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(2);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(2);
         graph->add_edge(0, 1);
         EXPECT_FALSE(graph->has_edge(1, 0));
     }
 
-    TEST_F(AdjacencyListTest, RemoveExistingEdge)
+    TYPED_TEST_P(GraphTest, RemoveExistingEdge)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(2);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(2);
         graph->add_edge(0, 1);
         EXPECT_NO_THROW(
             {
@@ -124,9 +126,9 @@ namespace test
             });
     }
 
-    TEST_F(AdjacencyListTest, RemoveNonExistingEdge)
+    TYPED_TEST_P(GraphTest, RemoveNonExistingEdge)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(2);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(2);
         graph->add_edge(0, 1);
         EXPECT_THROW(
             {
@@ -135,12 +137,12 @@ namespace test
             graph::edge_not_found);
     }
 
-    TEST_F(AdjacencyListTest, GetNeighborsBaseCase)
+    TYPED_TEST_P(GraphTest, GetNeighborsBaseCase)
     {
-        std::ifstream in(get_path("BaseCase.txt"));
+        std::ifstream in(this->get_path("BaseCase.txt"));
         graph::SizeG count;
         in >> count;
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(count);
         std::copy(
             graph::read_edges<graph::Edge>(in),
             graph::EdgeInputIterator::end(),
@@ -170,21 +172,21 @@ namespace test
         in.close();
     }
 
-    TEST_F(AdjacencyListTest, GetNeighborsNonExistingNode)
+    TYPED_TEST_P(GraphTest, GetNeighborsNonExistingNode)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(3);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(3);
         EXPECT_THROW(
             {
                 graph->get_neighbors(3);
             },
             graph::invalid_node);
     }
-    TEST_F(AdjacencyListTest, GetEdgesBaseCase)
+    TYPED_TEST_P(GraphTest, GetEdgesBaseCase)
     {
-        std::ifstream in(get_path("BaseCase.txt"));
+        std::ifstream in(this->get_path("BaseCase.txt"));
         graph::SizeG count;
         in >> count;
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(count);
         std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
         std::vector<graph::Edge> result;
         std::transform(
@@ -215,19 +217,19 @@ namespace test
         in.close();
     }
 
-    TEST_F(AdjacencyListTest, GetEdgesIsolatedGraph)
+    TYPED_TEST_P(GraphTest, GetEdgesIsolatedGraph)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(5);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(5);
         std::vector<graph::EdgePtr> edges(graph->edge_iterator(), graph::EdgeInputIterator::end());
         EXPECT_EQ(edges.size(), 0);
     }
 
-    TEST_F(AdjacencyListTest, EdgeIterable)
+    TYPED_TEST_P(GraphTest, EdgeIterable)
     {
-        std::ifstream in(get_path("BaseCase2.txt"));
+        std::ifstream in(this->get_path("BaseCase2.txt"));
         graph::SizeG count;
         in >> count;
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(count);
         std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
         std::vector<graph::Edge> edges;
 
@@ -250,12 +252,12 @@ namespace test
                 graph::Edge{4, 5}));
         in.close();
     }
-    TEST_F(AdjacencyListTest, GetInteriorEdgesBaseCase)
+    TYPED_TEST_P(GraphTest, GetInteriorEdgesBaseCase)
     {
-        std::ifstream in(get_path("BaseCase2.txt"));
+        std::ifstream in(this->get_path("BaseCase2.txt"));
         graph::SizeG count;
         in >> count;
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(count);
         std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
 
         EXPECT_EQ(0, graph->get_interior_edges(0).size());
@@ -287,19 +289,19 @@ namespace test
 
         in.close();
     }
-    TEST_F(AdjacencyListTest, GetInteriorEdgesIsolatedGraph)
+    TYPED_TEST_P(GraphTest, GetInteriorEdgesIsolatedGraph)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(3);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(3);
         EXPECT_EQ(0, graph->get_interior_edges(0).size());
         EXPECT_EQ(0, graph->get_interior_edges(1).size());
         EXPECT_EQ(0, graph->get_interior_edges(2).size());
     }
-    TEST_F(AdjacencyListTest, GetInteriorNeighborsBaseCase)
+    TYPED_TEST_P(GraphTest, GetInteriorNeighborsBaseCase)
     {
-        std::ifstream in(get_path("BaseCase2.txt"));
+        std::ifstream in(this->get_path("BaseCase2.txt"));
         graph::SizeG count;
         in >> count;
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(count);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(count);
         std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
         EXPECT_EQ(0, graph->get_interior_neighbors(0).size());
         EXPECT_EQ(0, graph->get_interior_neighbors(1).size());
@@ -316,11 +318,35 @@ namespace test
             graph->get_interior_neighbors(5),
             testing::UnorderedElementsAre(0, 1, 4));
     }
-    TEST_F(AdjacencyListTest, GetInteriorNeighborsIsolatedGraph)
+    TYPED_TEST_P(GraphTest, GetInteriorNeighborsIsolatedGraph)
     {
-        graph::GraphPtr graph = std::make_shared<graph::AdjacencyList>(3);
+        graph::GraphPtr graph = std::make_shared<TypeParam>(3);
         EXPECT_EQ(0, graph->get_interior_neighbors(0).size());
         EXPECT_EQ(0, graph->get_interior_neighbors(1).size());
         EXPECT_EQ(0, graph->get_interior_neighbors(2).size());
     }
+
+    REGISTER_TYPED_TEST_SUITE_P(
+        GraphTest, 
+        BaseCase, 
+        EmptyGraph, 
+        AddEdgeBaseCase,
+        AddEdgeNegativeNode,
+        AddEdgeNodeOverflow, 
+        HasExistingEdge,
+        HasNonExistingEdge,
+        RemoveExistingEdge,
+        RemoveNonExistingEdge,
+        GetNeighborsBaseCase,
+        GetNeighborsNonExistingNode,
+        GetEdgesBaseCase,
+        GetEdgesIsolatedGraph,
+        GetInteriorEdgesBaseCase,
+        GetInteriorEdgesIsolatedGraph,
+        GetInteriorNeighborsBaseCase,
+        GetInteriorNeighborsIsolatedGraph,
+        EdgeIterable
+    );
+    typedef testing::Types<graph::AdjacencyList> GraphTypes ;
+    INSTANTIATE_TYPED_TEST_SUITE_P(Graphs, GraphTest, GraphTypes );
 } //namespace test
