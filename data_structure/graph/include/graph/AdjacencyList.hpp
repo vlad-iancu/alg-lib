@@ -14,10 +14,6 @@ namespace graph
         AdjacencyList &operator=(const AdjacencyList &other) = delete;
         explicit AdjacencyList(const AdjacencyList &other) = delete;
 
-    protected:
-        void valid_nodes(Node u, Node v) const;
-        void valid_node(Node u) const;
-
     public:
         explicit AdjacencyList(SizeG node_count);
         explicit AdjacencyList(AdjacencyList &&source);

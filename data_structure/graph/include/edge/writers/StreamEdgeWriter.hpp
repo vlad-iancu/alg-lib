@@ -12,19 +12,9 @@ namespace graph {
         EdgePtr edge;
         
     public:
-        StreamEdgeWriter(std::ostream& out) :
-            out(out)
-        {}
-
-        void write(EdgePtr edg)
-        {
-            edge = edg;
-        }
-
-        void increment()
-        {
-            edge->write(out);
-        }
+        StreamEdgeWriter(std::ostream& out);
+        void write(EdgePtr edg);
+        void increment();
     };
 } //namespace graph
 

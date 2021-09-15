@@ -19,7 +19,9 @@ namespace graph
         Graph() = delete;
         explicit Graph(const Graph& other) = delete;
         Graph& operator=(const Graph& other) = delete;
-
+        void valid_nodes(Node u, Node v) const;
+        void valid_node(Node u) const;
+        
     public:
         explicit Graph(SizeG node_count);
         explicit Graph(Graph&& source);

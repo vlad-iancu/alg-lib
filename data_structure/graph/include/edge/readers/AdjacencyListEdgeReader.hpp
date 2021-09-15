@@ -8,7 +8,6 @@
 
 namespace graph
 {
-    template <typename TEdge>
     class AdjacencyListEdgeReader : public EdgeReader
     {
     private:

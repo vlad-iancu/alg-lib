@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include <graph/AdjacencyList.hpp>
+#include <graph/AdjacencyMatrix.hpp>
 
 #include <edge/iterators.hpp>
 
@@ -20,35 +21,51 @@ namespace test
         graph::SizeG n;
         in >> n;
 
-        graph::GraphPtr adjacencyList = std::make_shared<TypeParam>(n);
-        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(adjacencyList));
+        graph::GraphPtr graph = std::make_shared<TypeParam>(n);
+        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
 
-        EXPECT_EQ(3, adjacencyList->get_neighbors(0).size());
-        EXPECT_TRUE(adjacencyList->has_edge(0, 2));
-        EXPECT_TRUE(adjacencyList->has_edge(0, 4));
-        EXPECT_TRUE(adjacencyList->has_edge(0, 5));
+        std::cout << std::endl
+                  << "Node 0..." << std::endl;
+        EXPECT_EQ(3, graph->get_neighbors(0).size());
+        EXPECT_TRUE(graph->has_edge(0, 2));
+        EXPECT_TRUE(graph->has_edge(0, 4));
+        EXPECT_TRUE(graph->has_edge(0, 5));
+        std::cout << std::endl
+                  << "Node 1..." << std::endl;
 
-        EXPECT_EQ(2, adjacencyList->get_neighbors(1).size());
-        EXPECT_TRUE(adjacencyList->has_edge(1, 5));
-        EXPECT_TRUE(adjacencyList->has_edge(1, 4));
+        EXPECT_EQ(2, graph->get_neighbors(1).size());
+        EXPECT_TRUE(graph->has_edge(1, 5));
+        EXPECT_TRUE(graph->has_edge(1, 4));
+        std::cout << std::endl
+                  << "Node 2..." << std::endl;
 
-        EXPECT_EQ(2, adjacencyList->get_neighbors(2).size());
-        EXPECT_TRUE(adjacencyList->has_edge(2, 3));
-        EXPECT_TRUE(adjacencyList->has_edge(2, 4));
+        EXPECT_EQ(2, graph->get_neighbors(2).size());
+        EXPECT_TRUE(graph->has_edge(2, 3));
+        EXPECT_TRUE(graph->has_edge(2, 4));
+        std::cout << std::endl
+                  << "Node 3..." << std::endl;
 
-        EXPECT_EQ(1, adjacencyList->get_neighbors(3).size());
-        EXPECT_TRUE(adjacencyList->has_edge(3, 6));
+        EXPECT_EQ(1, graph->get_neighbors(3).size());
+        EXPECT_TRUE(graph->has_edge(3, 6));
+        std::cout << std::endl
+                  << "Node 4..." << std::endl;
 
-        EXPECT_EQ(1, adjacencyList->get_neighbors(4).size());
-        EXPECT_TRUE(adjacencyList->has_edge(4, 5));
+        EXPECT_EQ(1, graph->get_neighbors(4).size());
+        EXPECT_TRUE(graph->has_edge(4, 5));
+        std::cout << std::endl
+                  << "Node 5..." << std::endl;
 
-        EXPECT_EQ(0, adjacencyList->get_neighbors(5).size());
+        EXPECT_EQ(0, graph->get_neighbors(5).size());
+        std::cout << std::endl
+                  << "Node 6..." << std::endl;
 
-        EXPECT_EQ(0, adjacencyList->get_neighbors(6).size());
+        EXPECT_EQ(0, graph->get_neighbors(6).size());
+        std::cout << std::endl
+                  << "Node 7..." << std::endl;
 
-        EXPECT_EQ(2, adjacencyList->get_neighbors(7).size());
-        EXPECT_TRUE(adjacencyList->has_edge(7, 1));
-        EXPECT_TRUE(adjacencyList->has_edge(7, 6));
+        EXPECT_EQ(2, graph->get_neighbors(7).size());
+        EXPECT_TRUE(graph->has_edge(7, 1));
+        EXPECT_TRUE(graph->has_edge(7, 6));
 
         in.close();
     }
@@ -302,7 +319,7 @@ namespace test
         graph::SizeG count;
         in >> count;
         graph::GraphPtr graph = std::make_shared<TypeParam>(count);
-        std::copy(graph::read_edges<graph::Edge>(in), graph::EdgeInputIterator::end(), graph::edge_inserter(graph));
+        graph::copy(graph::read_edges<graph::Edge>(in), graph::edge_inserter(graph));
         EXPECT_EQ(0, graph->get_interior_neighbors(0).size());
         EXPECT_EQ(0, graph->get_interior_neighbors(1).size());
         EXPECT_THAT(
@@ -327,12 +344,12 @@ namespace test
     }
 
     REGISTER_TYPED_TEST_SUITE_P(
-        GraphTest, 
-        BaseCase, 
-        EmptyGraph, 
+        GraphTest,
+        BaseCase,
+        EmptyGraph,
         AddEdgeBaseCase,
         AddEdgeNegativeNode,
-        AddEdgeNodeOverflow, 
+        AddEdgeNodeOverflow,
         HasExistingEdge,
         HasNonExistingEdge,
         RemoveExistingEdge,
@@ -345,8 +362,13 @@ namespace test
         GetInteriorEdgesIsolatedGraph,
         GetInteriorNeighborsBaseCase,
         GetInteriorNeighborsIsolatedGraph,
-        EdgeIterable
-    );
-    typedef testing::Types<graph::AdjacencyList> GraphTypes ;
-    INSTANTIATE_TYPED_TEST_SUITE_P(Graphs, GraphTest, GraphTypes );
+        EdgeIterable);
+
+    //For prefix convenience
+    typedef graph::AdjacencyList AdjacencyList;
+    typedef graph::AdjacencyMatrix AdjacencyMatrix;
+
+    typedef testing::Types<AdjacencyList, AdjacencyMatrix> GraphTypes;
+    INSTANTIATE_TYPED_TEST_SUITE_P(Graphs, GraphTest, GraphTypes);
+
 } //namespace test

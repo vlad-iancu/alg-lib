@@ -26,10 +26,8 @@ namespace graph
         if (this != &source)
         {
             delete[] G;
-            node_count = source.node_count;
-            G = source.G;
-            source.G = nullptr;
-            source.node_count = 0;
+            node_count = std::move(source.node_count);
+            G = std::move(source.G);
         }
 
         return *this;
@@ -37,24 +35,8 @@ namespace graph
 
     EdgeInputIterator AdjacencyList::edge_iterator() const
     {
-        EdgeReaderPtr reader = std::shared_ptr<EdgeReader>(new AdjacencyListEdgeReader<Edge>(*this, 0, 0));
+        EdgeReaderPtr reader = std::shared_ptr<EdgeReader>(new AdjacencyListEdgeReader(*this, 0, 0));
         return EdgeInputIterator(reader);
-    }
-
-    void AdjacencyList::valid_nodes(Node u, Node v) const
-    {
-        if (u >= node_count || v >= node_count)
-        {
-            throw invalid_node();
-        }
-        if (u < 0 || v < 0)
-            throw invalid_node();
-    }
-
-    void AdjacencyList::valid_node(Node u) const
-    {
-        if (u >= node_count || u < 0)
-            throw invalid_node();
     }
 
     std::vector<Node> AdjacencyList::get_neighbors(Node u) const
@@ -86,14 +68,7 @@ namespace graph
         {
             if (has_edge(v, u))
             {
-                std::cout << std::endl
-                          << "Edge between " << v << " " << u << std::endl;
                 result.push_back(std::make_shared<Edge>(v, u));
-            }
-            else
-            {
-                std::cout << std::endl
-                          << "No Edge between " << v << " " << u << std::endl;
             }
         }
         return result;

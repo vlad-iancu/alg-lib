@@ -16,6 +16,7 @@ namespace graph
         return EdgeInputIterator(std::make_shared<StreamEdgeReader<TEdge>>(in));
     }
     EdgeOutputIterator edge_inserter(GraphPtr graph);
+    void copy(EdgeInputIterator in, EdgeOutputIterator out); // TO IMPLEMENT
 } // namespace graph
 
 #endif
