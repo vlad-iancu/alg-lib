@@ -11,22 +11,22 @@ namespace graph
     private:
         GraphPtr G;
         EdgePtr edge;
-    public:
-        GraphEdgeWriter(GraphPtr G) : G(G) {}
+        bool ignore;
 
-        EdgePtr& get_edge()
+    public:
+        GraphEdgeWriter(GraphPtr G, bool ignore = true) : G(G), ignore(ignore) {}
+
+        EdgePtr &get_edge()
         {
             return edge;
         }
 
         void increment()
         {
-            G->insert_edge(edge);
+            G->insert_edge(edge, ignore);
         }
-
     };
 
 } // namespace graph
-
 
 #endif

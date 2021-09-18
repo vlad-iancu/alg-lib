@@ -87,8 +87,8 @@ namespace test
     TYPED_TEST_P(GraphTest, AddEdgeBaseCase)
     {
         graph::GraphPtr G = std::make_shared<TypeParam>(2);
-        G->add_edge(0, 1);
-        G->add_edge(1, 0);
+        G->add_edge(0, 1, false);
+        G->add_edge(1, 0, false);
         EXPECT_TRUE(G->has_edge(0, 1));
         EXPECT_TRUE(G->has_edge(1, 0));
         EXPECT_EQ(1, G->get_neighbors(1).size());
@@ -120,6 +120,25 @@ namespace test
             graph::invalid_node);
     }
 
+    TYPED_TEST_P(GraphTest, AddExistingEdge)
+    {
+        EXPECT_THROW(
+            {
+                graph::GraphPtr G = std::make_shared<TypeParam>(3);
+                G->add_edge(1, 2, false);
+                EXPECT_TRUE(G->has_edge(1, 2));
+                G->add_edge(1, 2, false);
+            },
+            graph::edge_already_exists);
+        EXPECT_NO_THROW(
+            {
+                graph::GraphPtr G = std::make_shared<TypeParam>(3);
+                G->add_edge(1, 2, true);
+                EXPECT_TRUE(G->has_edge(1, 2));
+                G->add_edge(1, 2, true);
+            });
+    }
+
     TYPED_TEST_P(GraphTest, HasExistingEdge)
     {
         graph::GraphPtr graph = std::make_shared<TypeParam>(2);
@@ -140,19 +159,26 @@ namespace test
         graph->add_edge(0, 1);
         EXPECT_NO_THROW(
             {
-                graph->remove_edge(0, 1);
+                graph->remove_edge(0, 1, false);
             });
     }
 
     TYPED_TEST_P(GraphTest, RemoveNonExistingEdge)
     {
-        graph::GraphPtr graph = std::make_shared<TypeParam>(2);
-        graph->add_edge(0, 1);
+
         EXPECT_THROW(
             {
-                graph->remove_edge(1, 0);
+                graph::GraphPtr graph = std::make_shared<TypeParam>(2);
+                graph->add_edge(0, 1);
+                graph->remove_edge(1, 0, false);
             },
             graph::edge_not_found);
+        EXPECT_NO_THROW(
+            {
+                graph::GraphPtr graph = std::make_shared<TypeParam>(2);
+                graph->add_edge(0, 1);
+                graph->remove_edge(1, 0, true);
+            });
     }
 
     TYPED_TEST_P(GraphTest, GetNeighborsBaseCase)
@@ -351,6 +377,7 @@ namespace test
         AddEdgeBaseCase,
         AddEdgeNegativeNode,
         AddEdgeNodeOverflow,
+        AddExistingEdge,
         HasExistingEdge,
         HasNonExistingEdge,
         RemoveExistingEdge,

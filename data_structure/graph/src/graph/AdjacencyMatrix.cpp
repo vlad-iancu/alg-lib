@@ -105,10 +105,10 @@ namespace graph
         return EdgeInputIterator(std::make_shared<AdjacencyMatrixEdgeReader>(*this));
     }
 
-    void AdjacencyMatrix::add_edge(Node u, Node v)
+    void AdjacencyMatrix::add_edge(Node u, Node v, bool ignore)
     {
         valid_nodes(u, v);
-        if (has_edge(u, v))
+        if (!ignore && has_edge(u, v))
             throw edge_already_exists();
         G[u][v] = 1;
     }
@@ -119,18 +119,18 @@ namespace graph
         return G[u][v];
     }
 
-    void AdjacencyMatrix::remove_edge(Node u, Node v)
+    void AdjacencyMatrix::remove_edge(Node u, Node v, bool ignore)
     {
         valid_nodes(u, v);
-        if (!has_edge(u, v))
+        if (!ignore && !has_edge(u, v))
             throw edge_not_found();
         G[u][v] = 0;
     }
 
-    void AdjacencyMatrix::insert_edge(EdgePtr edge)
+    void AdjacencyMatrix::insert_edge(EdgePtr edge, bool ignore)
     {
         valid_nodes(edge->from, edge->to);
-        add_edge(edge->from, edge->to);
+        add_edge(edge->from, edge->to, ignore);
     }
 
     Node AdjacencyMatrix::get(Node i, Node j) const

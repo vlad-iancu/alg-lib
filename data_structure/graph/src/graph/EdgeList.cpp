@@ -96,10 +96,10 @@ namespace graph
         return EdgeInputIterator(std::make_shared<EdgeListEdgeReader>(*this));
     }
 
-    void EdgeList::add_edge(Node u, Node v)
+    void EdgeList::add_edge(Node u, Node v, bool ignore)
     {
         valid_nodes(u, v);
-        if (has_edge(u, v))
+        if (!ignore && has_edge(u, v))
             throw edge_already_exists();
         _edges.push_back(std::make_shared<Edge>(u, v));
     }
@@ -117,7 +117,7 @@ namespace graph
         return false;
     }
 
-    void EdgeList::remove_edge(Node u, Node v)
+    void EdgeList::remove_edge(Node u, Node v, bool ignore)
     {
         valid_nodes(u, v);
         for (auto it = _edges.begin(); it != _edges.end(); it++)
@@ -128,12 +128,13 @@ namespace graph
                 return;
             }
         }
-        throw edge_not_found();
+        if (!ignore)
+            throw edge_not_found();
     }
 
-    void EdgeList::insert_edge(EdgePtr edge)
+    void EdgeList::insert_edge(EdgePtr edge, bool ignore)
     {
-        add_edge(edge->from, edge->to);
+        add_edge(edge->from, edge->to, ignore);
     }
 
     EdgePtr EdgeList::get(SizeE index) const

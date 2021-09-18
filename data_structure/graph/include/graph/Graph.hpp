@@ -36,12 +36,12 @@ namespace graph
 
         virtual EdgeInputIterator edge_iterator() const = 0;
 
-        virtual void add_edge(Node u, Node v) = 0;
+        virtual void add_edge(Node u, Node v, bool ignore = true) = 0;
         virtual bool has_edge(Node u, Node v) const = 0;
-        virtual void remove_edge(Node u, Node v) = 0;
+        virtual void remove_edge(Node u, Node v, bool ignore = true) = 0;
 
         EdgeIterable edges() const;
-        virtual void insert_edge(EdgePtr edge) = 0;
+        virtual void insert_edge(EdgePtr edge, bool ignore = true) = 0;
     };
 
     typedef std::shared_ptr<Graph> GraphPtr;

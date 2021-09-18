@@ -26,11 +26,11 @@ namespace graph
 
         EdgeInputIterator edge_iterator() const;
 
-        void add_edge(Node u, Node v);
+        void add_edge(Node u, Node v, bool ignore = true);
         bool has_edge(Node u, Node v) const;
-        void remove_edge(Node u, Node v);
+        void remove_edge(Node u, Node v, bool ignore = true);
 
-        void insert_edge(EdgePtr edge);
+        void insert_edge(EdgePtr edge, bool ignore = true);
 
         //Object methods
         EdgePtr get(SizeE index) const;

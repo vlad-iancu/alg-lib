@@ -29,11 +29,11 @@ namespace graph
         
         virtual EdgeInputIterator edge_iterator() const;
 
-        virtual void add_edge(Node u, Node v);
+        virtual void add_edge(Node u, Node v, bool ignore = true);
         virtual bool has_edge(Node u, Node v) const;
-        virtual void remove_edge(Node u, Node v);
+        virtual void remove_edge(Node u, Node v, bool ignore = true);
 
-        virtual void insert_edge(EdgePtr edge);
+        virtual void insert_edge(EdgePtr edge, bool ignore = true);
     };
 }
 

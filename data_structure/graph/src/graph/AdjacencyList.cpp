@@ -88,10 +88,10 @@ namespace graph
         return result;
     }
 
-    void AdjacencyList::add_edge(Node u, Node v)
+    void AdjacencyList::add_edge(Node u, Node v, bool ignore)
     {
         valid_nodes(u, v);
-        if (std::find(G[u].begin(), G[u].end(), v) != G[u].end())
+        if (!ignore && std::find(G[u].begin(), G[u].end(), v) != G[u].end())
             throw edge_already_exists();
         G[u].push_back(v);
     }
@@ -102,17 +102,24 @@ namespace graph
         return std::find(G[u].begin(), G[u].end(), v) != G[u].end();
     }
 
-    void AdjacencyList::remove_edge(Node u, Node v)
+    void AdjacencyList::remove_edge(Node u, Node v, bool ignore)
     {
         valid_nodes(u, v);
         if (!has_edge(u, v))
-            throw edge_not_found();
+            if (!ignore)
+            {
+                throw edge_not_found();
+            }
+            else
+            {
+                return;
+            }
         G[u].erase(std::find(G[u].begin(), G[u].end(), v));
     }
 
-    void AdjacencyList::insert_edge(EdgePtr edge)
+    void AdjacencyList::insert_edge(EdgePtr edge, bool ignore)
     {
-        add_edge(edge->from, edge->to);
+        add_edge(edge->from, edge->to, ignore);
     }
 
 }
