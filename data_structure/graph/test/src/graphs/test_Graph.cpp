@@ -7,6 +7,7 @@
 
 #include <graph/AdjacencyList.hpp>
 #include <graph/AdjacencyMatrix.hpp>
+#include <graph/EdgeList.hpp>
 
 #include <edge/iterators.hpp>
 
@@ -367,8 +368,14 @@ namespace test
     //For prefix convenience
     typedef graph::AdjacencyList AdjacencyList;
     typedef graph::AdjacencyMatrix AdjacencyMatrix;
+    typedef graph::EdgeList EdgeList;
 
-    typedef testing::Types<AdjacencyList, AdjacencyMatrix> GraphTypes;
+    typedef testing::Types<
+        AdjacencyList,
+        AdjacencyMatrix,
+        EdgeList>
+
+        GraphTypes;
     INSTANTIATE_TYPED_TEST_SUITE_P(Graphs, GraphTest, GraphTypes);
 
 } //namespace test
