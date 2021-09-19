@@ -19,7 +19,7 @@ add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
 enable_testing()
 add_custom_target(tests ${CMAKE_CTEST_COMMAND} -V)
 
-list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program")
+list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program" "logging")
 foreach(APP_DIR ${APP_DIRS})
     file(GLOB APP_SUBDIRS ${APP_DIR}/*)
     foreach(APP_SUBDIR ${APP_SUBDIRS})

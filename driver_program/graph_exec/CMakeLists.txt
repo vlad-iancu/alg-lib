@@ -4,4 +4,9 @@ target_include_directories(${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/in
 
 #Target specific code:
 target_link_libraries(${TARGET_NAME} PRIVATE ${DATA_STRUCTURE_GRAPH})
+
+install(TARGETS ${TARGET_NAME} DESTINATION bin)
+#install(
+#    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+#    DESTINATION include)
 #target_compile_options(${TARGET_NAME} PUBLIC "-fno-elide-constructors")
