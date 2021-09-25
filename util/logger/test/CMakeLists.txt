@@ -1,0 +1,6 @@
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+add_executable(${TARGET_NAME}_test ${SOURCES})
+target_include_directories(${TARGET_NAME}_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(${TARGET_NAME}_test ${TARGET_NAME} gtest gmock gtest_main pthread)
+include(GoogleTest)
+gtest_discover_tests(${TARGET_NAME}_test)

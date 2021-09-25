@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-project(alg_lib)
+set(CMAKE_CXX_STANDARD 20)
+project(alg)
 
 option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" OFF)
 
@@ -19,7 +19,7 @@ add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
 enable_testing()
 add_custom_target(tests ${CMAKE_CTEST_COMMAND} -V)
 
-list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program" "logging")
+list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program" "util")
 foreach(APP_DIR ${APP_DIRS})
     file(GLOB APP_SUBDIRS ${APP_DIR}/*)
     foreach(APP_SUBDIR ${APP_SUBDIRS})

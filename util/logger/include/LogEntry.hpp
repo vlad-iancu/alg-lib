@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <chrono>
+#include <sstream>
 
 namespace logger
 {
@@ -11,16 +12,30 @@ namespace logger
     typedef std::string Domain;
     typedef std::string Component;
 
+    class invalid_log_level_exception : public std::exception
+    {
+    private:
+        int level;
+
+    public:
+        invalid_log_level_exception(int level) : level(level) {}
+        virtual const char *what() const noexcept
+        {
+            std::stringstream sstr;
+            sstr << "Invalid log level: " << level;
+            return sstr.str().c_str();
+        }
+    };
     class LogEntry
     {
     public:
         enum LogLevel
         {
-            INFO,
-            WARN,
-            VERBOSE,
-            ERROR,
-            PANIC,
+            INFO = 0,
+            WARN = 1,
+            VERBOSE = 2,
+            ERROR = 3,
+            PANIC = 4,
         };
 
     private:
@@ -30,6 +45,8 @@ namespace logger
         std::string _filename;
         int _line;
         Timestamp _timestamp;
+
+        static std::string level_names[5];
 
     public:
         LogEntry(
@@ -46,26 +63,18 @@ namespace logger
                                                                        _timestamp(_timestamp)
         {
         }
-        LogLevel level() const
-        {
-            return _level;
-        }
-        std::string domain() const
-        {
-            return _domain;
-        }
-        std::string component() const
-        {
-            return _component;
-        }
-        std::string filename() const
-        {
-            return _filename;
-        }
-        int line() const
-        {
-            return _line;
-        }
+
+        LogLevel level() const;
+
+        Domain domain() const;
+
+        Component component() const;
+
+        std::string filename() const;
+
+        int line() const;
+
+        std::string level_str() const;
     };
 
     typedef std::shared_ptr<LogEntry> LogEntryPtr;
