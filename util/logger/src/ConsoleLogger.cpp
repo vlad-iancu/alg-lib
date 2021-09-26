@@ -3,13 +3,11 @@
 
 namespace logger
 {
+    ConsoleLogger::ConsoleLogger(LogFormatter formatter): formatter(formatter) {
+
+    }
     void ConsoleLogger::consume_log(LogEntryCPtr entry)
     {
-        std::cout
-            << entry->level_str() << " "
-            << entry->component() << " "
-            << entry->domain() << " "
-            << entry->filename() << ":"
-            << entry->line();
+        std::cout << formatter(entry) << std::endl;
     }
 } // namespace logger

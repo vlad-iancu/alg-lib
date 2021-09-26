@@ -5,6 +5,7 @@
 #include <string>
 #include <LogEntry.hpp>
 #include <algorithm>
+#include <formatter/LogFormatter.hpp>
 
 namespace logger
 {

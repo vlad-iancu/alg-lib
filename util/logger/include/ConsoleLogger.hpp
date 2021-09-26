@@ -8,8 +8,12 @@ namespace logger
 {
     class ConsoleLogger : public Logger
     {
+    private:
+        LogFormatter formatter;
     protected:
         void consume_log(LogEntryCPtr entry);
+    public:
+        explicit ConsoleLogger(LogFormatter formatter = default_formatter);
     };
 } // namespace logger
 

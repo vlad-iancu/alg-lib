@@ -7,7 +7,7 @@ namespace test
 {
     TEST_F(LoggerTest, LoggerBaseCase)
     {
-        MockLogger mock_logger;
+        testing::NiceMock<MockLogger> mock_logger;
         logger::LogEntryCPtr log = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Dom", "MockLogger", "file.cpp", 0);
         EXPECT_CALL(mock_logger, consume_log(log)).Times(3);
         mock_logger.log(log);
@@ -17,7 +17,7 @@ namespace test
 
     TEST_F(LoggerTest, LoggerDomainFilter)
     {
-        MockLogger mock_logger;
+        testing::NiceMock<MockLogger> mock_logger;
         logger::LogEntryCPtr log1 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Domain1", "MockLogger", "file.cpp", 0);
         logger::LogEntryCPtr log2 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Domain2", "MockLogger", "file.cpp", 0);
         EXPECT_CALL(mock_logger, consume_log(log1)).Times(1);
@@ -29,7 +29,7 @@ namespace test
 
     TEST_F(LoggerTest, LoggerComponentFilter)
     {
-        MockLogger mock_logger;
+        testing::NiceMock<MockLogger> mock_logger;
         logger::LogEntryCPtr log1 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Domain1", "MockLogger1", "file.cpp", 0);
         logger::LogEntryCPtr log2 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Domain2", "MockLogger2", "file.cpp", 0);
         EXPECT_CALL(mock_logger, consume_log(log1)).Times(1);
@@ -41,7 +41,7 @@ namespace test
 
     TEST_F(LoggerTest, LoggerValidLevelFilter)
     {
-        MockLogger mock_logger;
+        testing::NiceMock<MockLogger> mock_logger;
         logger::LogEntryCPtr log1 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::WARN, "Domain1", "MockLogger1", "file.cpp", 0);
         logger::LogEntryCPtr log2 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Domain2", "MockLogger2", "file.cpp", 0);
         EXPECT_CALL(mock_logger, consume_log(log1)).Times(1);
@@ -53,7 +53,7 @@ namespace test
 
     TEST_F(LoggerTest, LoggerInvalidLevelFilter)
     {
-        MockLogger mock_logger;
+        testing::NiceMock<MockLogger> mock_logger;
         logger::LogEntryCPtr log1 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::WARN, "Domain1", "MockLogger1", "file.cpp", 0);
         logger::LogEntryCPtr log2 = std::make_shared<logger::LogEntry>(logger::LogEntry::LogLevel::VERBOSE, "Domain2", "MockLogger2", "file.cpp", 0);
         EXPECT_THROW(
