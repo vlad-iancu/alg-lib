@@ -32,7 +32,7 @@ jobs:
         uses: langroodi/doxygenize@v1.2
         with:
           # Doxygen configuratio file path
-          doxygenconf: ./doxy.conf
+          doxygenconf: ../../doxy.conf
           # Generated HTML documents output folder
           htmloutput: ./
           # GitHub Pages branch name
