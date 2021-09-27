@@ -7,6 +7,9 @@
 
 namespace graph
 {
+    /**
+     * Implementation of an adjacency list
+     */
     class AdjacencyList : public Graph
     {
     private:
