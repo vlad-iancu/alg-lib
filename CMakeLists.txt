@@ -18,6 +18,7 @@ add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
 
 enable_testing()
 add_custom_target(tests ${CMAKE_CTEST_COMMAND} -V)
+add_custom_target(docu COMMAND doxygen ${PROJECT_SOURCE_DIR}/doxy.conf)
 
 list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program" "util")
 foreach(APP_DIR ${APP_DIRS})

@@ -11,7 +11,9 @@
 
 namespace graph
 {
-
+    /**
+     * Abstract data structure for a graph
+     */
     class Graph
     {
     protected:
