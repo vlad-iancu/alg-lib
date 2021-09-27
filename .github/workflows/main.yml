@@ -34,7 +34,7 @@ jobs:
           # Doxygen configuratio file path
           doxygenconf: ./doxy.conf
           # Generated HTML documents output folder
-          htmloutput: ./docs/html
+          htmloutput: ./docs/html/
           # GitHub Pages branch name
           ghpagesbranch: docs
           # GitHub Pages directory path
