@@ -8,5 +8,3 @@ install(
     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
     DESTINATION include)
 #Target specific code:
-target_link_libraries(${TARGET_NAME} PUBLIC stdc++fs)
-#target_compile_options(${TARGET_NAME} PUBLIC "-fno-elide-constructors")
