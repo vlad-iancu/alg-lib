@@ -2,7 +2,10 @@
 #define ALG_LIB_DATA_STRUCTURE_EDGE_ADJACENCY_LIST_READER_H_
 
 #include <edge/readers/EdgeReader.hpp>
+#include <edge/Edge.hpp>
+
 #include <graph/AdjacencyMatrix.hpp>
+#include <graph/types.hpp>
 
 namespace graph
 {
@@ -22,6 +25,7 @@ namespace graph
         bool _can_read = true;
         MatrixIndex index;
         void next_edge(bool include_current);
+
     public:
         AdjacencyMatrixEdgeReader(const AdjacencyMatrix &mat);
 

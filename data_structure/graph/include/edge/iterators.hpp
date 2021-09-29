@@ -2,8 +2,8 @@
 #define ALG_LIB_DATA_STRUCTURE_GRAPH_EDGE_ITERATORS_H_
 
 #include <edge/iterators/EdgeOutputIterator.hpp>
-#include <edge/writers/GraphEdgeWriter.hpp>
 #include <edge/iterators/EdgeInputIterator.hpp>
+#include <edge/writers/GraphEdgeWriter.hpp>
 #include <edge/readers/StreamEdgeReader.hpp>
 
 #include <graph/Graph.hpp>

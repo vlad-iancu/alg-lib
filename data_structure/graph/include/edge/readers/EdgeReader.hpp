@@ -2,7 +2,9 @@
 #define ALG_LIB_DATA_STRUCTURE_EDGE_READER_PROVIDER_H_
 
 #include <memory>
+
 #include <edge/Edge.hpp>
+
 namespace graph
 {
     class EdgeReader

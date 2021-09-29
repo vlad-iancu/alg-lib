@@ -1,0 +1,6 @@
+#ifndef ALG_LIB_LOGGER_FILE_LOGGER_H_
+#define ALG_LIB_LOGGER_FILE_LOGGER_H_
+
+
+
+#endif

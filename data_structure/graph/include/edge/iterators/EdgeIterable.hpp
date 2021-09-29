@@ -11,10 +11,7 @@ namespace graph
         EdgeInputIterator it;
 
     public:
-        EdgeIterable(EdgeInputIterator it) : it(it) 
-        {
-            std::cout << std::endl << "In constructor: " << (*it)->from << " " << (*it)->to << std::endl;
-        }
+        EdgeIterable(EdgeInputIterator it) : it(it) {}
         EdgeInputIterator begin() { return it; }
         EdgeInputIterator end() { return EdgeInputIterator::end(); }
     };

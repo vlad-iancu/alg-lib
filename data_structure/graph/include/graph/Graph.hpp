@@ -12,7 +12,19 @@
 namespace graph
 {
     /**
-     * Abstract data structure for a graph
+     * Abstract base class that serves creating graphs.
+     * 
+     * In order to create a custom Graph, the user has to implement:
+     * get_neighbors(Node u)
+     * get_interior_neighbors(Node u)
+     * get_neighbor_edges(Node u)
+     * get_interior_edges(Node u)
+     * edge_iterator()
+     * add_edge(Node u, Node v, bool)
+     * has_edge(Node u, Node v)
+     * remove_edge(Node u, Node v, bool)
+     * edges()
+     * insert_edge(EdgePtr, bool)
      */
     class Graph
     {

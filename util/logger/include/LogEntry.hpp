@@ -5,13 +5,14 @@
 #include <memory>
 #include <chrono>
 #include <sstream>
+#include <LogLevel.hpp>
 
 namespace logger
 {
     typedef std::chrono::time_point<std::chrono::steady_clock, std::chrono::nanoseconds> Timestamp;
     typedef std::string Domain;
     typedef std::string Component;
-
+    
     class invalid_log_level_exception : public std::exception
     {
     private:
@@ -28,16 +29,6 @@ namespace logger
     };
     class LogEntry
     {
-    public:
-        enum LogLevel
-        {
-            INFO = 0,
-            WARN = 1,
-            VERBOSE = 2,
-            ERROR = 3,
-            PANIC = 4,
-        };
-
     private:
         LogLevel _level;
         Domain _domain;
@@ -45,7 +36,7 @@ namespace logger
         std::string _filename;
         int _line;
         Timestamp _timestamp;
-
+        std::string _message;
         static std::string level_names[5];
 
     public:
@@ -55,12 +46,14 @@ namespace logger
             std::string _component,
             std::string _filename,
             int _line,
+            const std::string &_message,
             Timestamp _timestamp = std::chrono::steady_clock::now()) : _level(_level),
                                                                        _domain(_domain),
                                                                        _component(_component),
                                                                        _filename(_filename),
                                                                        _line(_line),
-                                                                       _timestamp(_timestamp)
+                                                                       _timestamp(_timestamp),
+                                                                       _message(_message)
         {
         }
 
@@ -75,6 +68,8 @@ namespace logger
         int line() const;
 
         std::string level_str() const;
+
+        std::string message() const;
     };
 
     typedef std::shared_ptr<LogEntry> LogEntryPtr;

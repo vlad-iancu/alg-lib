@@ -1,4 +1,6 @@
 #include <edge/readers/AdjacencyMatrixEdgeReader.hpp>
+#include <edge/Edge.hpp>
+
 namespace graph
 {
     AdjacencyMatrixEdgeReader::AdjacencyMatrixEdgeReader(const AdjacencyMatrix &mat) : mat(mat), index(MatrixIndex(mat.get_node_count()))

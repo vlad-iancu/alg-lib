@@ -13,12 +13,12 @@ namespace graph
         Node to;
         Edge() = default;
         Edge(Node from, Node to) : from(from), to(to) {}
-        virtual bool read(std::istream& input)
+        virtual bool read(std::istream &input)
         {
             return static_cast<bool>(input >> from >> to);
         }
 
-        virtual void write(std::ostream& output)
+        virtual void write(std::ostream &output)
         {
             output << from << to;
         }
@@ -31,12 +31,12 @@ namespace graph
             return e;
         }
 
-        bool operator==(const Edge& other) const
+        bool operator==(const Edge &other) const
         {
             return from == other.from && to == other.to;
         }
 
-        bool operator!=(const Edge& other) const
+        bool operator!=(const Edge &other) const
         {
             return !(*this == other);
         }

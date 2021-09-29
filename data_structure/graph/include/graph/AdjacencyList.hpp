@@ -29,7 +29,7 @@ namespace graph
 
         virtual std::vector<EdgePtr> get_neighbor_edges(Node u) const;
         virtual std::vector<EdgePtr> get_interior_edges(Node u) const;
-        
+
         virtual EdgeInputIterator edge_iterator() const;
 
         virtual void add_edge(Node u, Node v, bool ignore = true);

@@ -1,9 +1,12 @@
 #ifndef ALG_LIB_DATA_STRUCTURE_EDGE_ADJACENCY_LIST_READER_H_
 #define ALG_LIB_DATA_STRUCTURE_EDGE_ADJACENCY_LIST_READER_H_
+
 #include <memory>
 
 #include <edge/readers/EdgeReader.hpp>
+
 #include <graph/Graph.hpp>
+#include <graph/types.hpp>
 #include <graph/AdjacencyList.hpp>
 
 namespace graph
@@ -21,50 +24,13 @@ namespace graph
         explicit AdjacencyListEdgeReader(
             const AdjacencyList &G,
             Node current_node = 0,
-            Node current_neighbor = 0) : G(G),
-                                         current_node(current_node),
-                                         current_neighbor(current_neighbor)
-        {
-            while (current_node < G.get_node_count() && G.get_neighbor_edges(current_node).size() == 0)
-                current_node++;
+            Node current_neighbor = 0);
 
-            _can_read = current_node < G.get_node_count();
-            if (_can_read)
-            {
-                neighbors = G.get_neighbor_edges(current_node);
-            }
-        }
+        bool increment() override;
 
-        bool increment() override
-        {
-            if (current_neighbor >= neighbors.size() - 1)
-            {
-                current_node++;
-                current_neighbor = 0;
-                if (current_node >= G.get_node_count())
-                    return false;
-                while (current_node < G.get_node_count() && (neighbors = G.get_neighbor_edges(current_node)).empty())
-                {
-                    current_node++;
-                }
-            }
-            else
-            {
-                current_neighbor++;
-            }
+        EdgePtr current_edge() const override;
 
-            return current_node < G.get_node_count();
-        }
-
-        EdgePtr current_edge() const override
-        {
-            return neighbors[current_neighbor];
-        }
-
-        bool can_read() const override
-        {
-            return _can_read;
-        }
+        bool can_read() const override;
     };
 } //namespace graph
 #endif

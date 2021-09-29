@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <graph/Graph.hpp>
+#include <graph/types.hpp>
 #include <edge/Edge.hpp>
 
 namespace graph

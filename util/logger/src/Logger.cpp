@@ -12,7 +12,7 @@ namespace logger
         domain_filters.insert(filter);
     }
 
-    void Logger::add_level_filter(const LogEntry::LogLevel &filter)
+    void Logger::add_level_filter(const logger::LogLevel &filter)
     {
         if (filter > 4 || filter < 0)
             throw invalid_log_level_exception(filter);

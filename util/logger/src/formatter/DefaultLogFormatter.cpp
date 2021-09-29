@@ -9,9 +9,10 @@ namespace logger
         sstr
             << entry->level_str() << " "
             << entry->component() << " "
-            << entry->domain() << " "
+            << entry->domain() << " ["
             << entry->filename() << ":"
-            << entry->line();
+            << entry->line() << "] "
+            << entry->message() << std::endl;
 
         return sstr.str();
     }

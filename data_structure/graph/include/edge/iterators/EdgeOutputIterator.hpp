@@ -12,15 +12,16 @@ namespace graph
     {
     private:
         EdgeWriterPtr writer;
+
     public:
         EdgeOutputIterator(EdgeWriterPtr writer) : writer(writer) {}
 
-        EdgePtr& operator*()
+        EdgePtr &operator*()
         {
             return writer->get_edge();
         }
 
-        EdgeOutputIterator& operator++()
+        EdgeOutputIterator &operator++()
         {
             writer->increment();
             return *this;
@@ -32,10 +33,8 @@ namespace graph
             ++(*this);
             return tmp;
         }
-
     };
 
 } // namespace graph
-
 
 #endif

@@ -2,7 +2,7 @@
 
 namespace logger
 {
-    LogEntry::LogLevel LogEntry::level() const
+    LogLevel LogEntry::level() const
     {
         return _level;
     }
@@ -32,6 +32,11 @@ namespace logger
         if (_level > 4 || _level < 0)
             throw invalid_log_level_exception(_level);
         return level_names[_level];
+    }
+
+    std::string LogEntry::message() const
+    {
+        return _message;
     }
 
     std::string LogEntry::level_names[5]{"INFO", "WARN", "VERBOSE", "ERROR", "PANIC"};

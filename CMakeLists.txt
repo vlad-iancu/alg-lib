@@ -16,9 +16,15 @@ FetchContent_MakeAvailable(googletest)
 set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 add_compile_definitions(TEST_INPUT_DIR="${TEST_DIR}")
 
+#set(CLANG_TIDY_CHECKS "readability-*,cppcoreguidelines-*,clang-analyzer-*")
+#set(CMAKE_CXX_CLANG_TIDY
+#    clang-tidy;
+#    -checks=${CLANG_TIDY_CHECKS}
+#)
+
 enable_testing()
 add_custom_target(tests ${CMAKE_CTEST_COMMAND} -V)
-add_custom_target(docu COMMAND doxygen ${PROJECT_SOURCE_DIR}/doxy.conf)
+add_custom_target(docs COMMAND doxygen ${PROJECT_SOURCE_DIR}/doxy.conf)
 
 list(APPEND APP_DIRS "algorithm" "data_structure" "driver_program" "util")
 foreach(APP_DIR ${APP_DIRS})

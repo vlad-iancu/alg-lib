@@ -2,6 +2,7 @@
 #define ALG_LIB_DATA_STRUCTURE_EDGE_EDGE_LIST_READER_H_
 
 #include <graph/EdgeList.hpp>
+#include <graph/types.hpp>
 
 #include <edge/readers/EdgeReader.hpp>
 
