@@ -72,89 +72,92 @@ $(function() {
 <a href="EdgeInputIterator_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ALG_LIB_DATA_STRUCTURE_EDGE_INPUT_ITERATOR_H_</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ALG_LIB_DATA_STRUCTURE_EDGE_INPUT_ITERATOR_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="EdgeReader_8hpp.html">edge/readers/EdgeReader.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegraph.html">graph</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a>: <span class="keyword">public</span> std::iterator&lt;std::input_iterator_tag, EdgePtr&gt;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">EdgeReaderPtr</a> reader;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">bool</span> can_read;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a871bc8910e7d05108da0e1d191dfa549">   19</a></span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a871bc8910e7d05108da0e1d191dfa549">EdgeInputIterator</a>(<a class="code" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">EdgeReaderPtr</a> reader) :</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            reader(reader),</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            can_read(reader-&gt;can_read())</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#ae3f4e8ca9309fa95ccda9cf0012d41bc">   24</a></span>&#160;        <a class="code" href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">EdgePtr</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#ae3f4e8ca9309fa95ccda9cf0012d41bc">operator*</a>()</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> reader-&gt;current_edge();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#aa049aaf09c3575dd458fbacd1b01bf27">   29</a></span>&#160;        <a class="code" href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">EdgePtr</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#aa049aaf09c3575dd458fbacd1b01bf27">operator-&gt;</a>()</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">return</span> reader-&gt;current_edge();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a72171a29e913a9c6d8ec8d3b7dad921d">   34</a></span>&#160;        <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a72171a29e913a9c6d8ec8d3b7dad921d">operator++</a>()</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            can_read = reader-&gt;increment();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;           <span class="comment">// std::cout &lt;&lt; &quot;can_read = &quot; &lt;&lt; can_read &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a99e8c7f90bbc5cb2790ee4952680cbe6">   41</a></span>&#160;        <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a99e8c7f90bbc5cb2790ee4952680cbe6">operator++</a>(<span class="keywordtype">int</span>)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;          <span class="comment">//  std::cout &lt;&lt; &quot;Incrementing the iterator: &quot;;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> tmp(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            can_read = reader-&gt;increment();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;          <span class="comment">//  std::cout &lt;&lt; &quot;can_read = &quot; &lt;&lt; can_read &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#aebf1ed2eb98f0376bcd00afdc98a93eb">   50</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html#aebf1ed2eb98f0376bcd00afdc98a93eb">operator==</a>(<span class="keyword">const</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a>&amp; it)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">if</span> (!can_read &amp;&amp; !it.can_read)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">if</span> (can_read != it.can_read)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> (*it.reader-&gt;current_edge()) == (*reader-&gt;current_edge());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a7ed04dbcf4be4391f93bbf9d3114296c">   59</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a7ed04dbcf4be4391f93bbf9d3114296c">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a>&amp; it)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> !(it == *<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8">   64</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8">end</a>()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> it;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            it.can_read = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> it;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    };</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">// namespace graph</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="EdgeReader_8hpp.html">edge/readers/EdgeReader.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Edge_8hpp.html">edge/Edge.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegraph.html">graph</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> : <span class="keyword">public</span> std::iterator&lt;std::input_iterator_tag, EdgePtr&gt;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">EdgeReaderPtr</a> reader;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">bool</span> can_read;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a871bc8910e7d05108da0e1d191dfa549">   21</a></span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a871bc8910e7d05108da0e1d191dfa549">EdgeInputIterator</a>(<a class="code" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">EdgeReaderPtr</a> reader) : reader(reader),</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                           can_read(reader-&gt;can_read())</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#ae3f4e8ca9309fa95ccda9cf0012d41bc">   26</a></span>&#160;        <a class="code" href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">EdgePtr</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#ae3f4e8ca9309fa95ccda9cf0012d41bc">operator*</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> reader-&gt;current_edge();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#aa049aaf09c3575dd458fbacd1b01bf27">   31</a></span>&#160;        <a class="code" href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">EdgePtr</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#aa049aaf09c3575dd458fbacd1b01bf27">operator-&gt;</a>()</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">return</span> reader-&gt;current_edge();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a72171a29e913a9c6d8ec8d3b7dad921d">   36</a></span>&#160;        <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a72171a29e913a9c6d8ec8d3b7dad921d">operator++</a>()</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            can_read = reader-&gt;increment();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="comment">// std::cout &lt;&lt; &quot;can_read = &quot; &lt;&lt; can_read &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a99e8c7f90bbc5cb2790ee4952680cbe6">   43</a></span>&#160;        <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a99e8c7f90bbc5cb2790ee4952680cbe6">operator++</a>(<span class="keywordtype">int</span>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="comment">//  std::cout &lt;&lt; &quot;Incrementing the iterator: &quot;;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> tmp(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            can_read = reader-&gt;increment();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="comment">//  std::cout &lt;&lt; &quot;can_read = &quot; &lt;&lt; can_read &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#aebf1ed2eb98f0376bcd00afdc98a93eb">   52</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html#aebf1ed2eb98f0376bcd00afdc98a93eb">operator==</a>(<span class="keyword">const</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> &amp;it)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">if</span> (!can_read &amp;&amp; !it.can_read)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">if</span> (can_read != it.can_read)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> (*it.reader-&gt;current_edge()) == (*reader-&gt;current_edge());</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a7ed04dbcf4be4391f93bbf9d3114296c">   61</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a7ed04dbcf4be4391f93bbf9d3114296c">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> &amp;it)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span> !(it == *<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8">   66</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> <a class="code" href="classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8">end</a>()</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="classgraph_1_1EdgeInputIterator.html">EdgeInputIterator</a> it;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            it.can_read = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> it;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    };</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;} <span class="comment">// namespace graph</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aEdgeReader_8hpp_html"><div class="ttname"><a href="EdgeReader_8hpp.html">EdgeReader.hpp</a></div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html">graph::EdgeInputIterator</a></div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:12</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a72171a29e913a9c6d8ec8d3b7dad921d"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a72171a29e913a9c6d8ec8d3b7dad921d">graph::EdgeInputIterator::operator++</a></div><div class="ttdeci">EdgeInputIterator operator++()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:34</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a7ed04dbcf4be4391f93bbf9d3114296c"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a7ed04dbcf4be4391f93bbf9d3114296c">graph::EdgeInputIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const EdgeInputIterator &amp;it) const</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:59</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a871bc8910e7d05108da0e1d191dfa549"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a871bc8910e7d05108da0e1d191dfa549">graph::EdgeInputIterator::EdgeInputIterator</a></div><div class="ttdeci">EdgeInputIterator(EdgeReaderPtr reader)</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:19</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a91e3fd46699d088d54892f6a4a949fc8"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8">graph::EdgeInputIterator::end</a></div><div class="ttdeci">static EdgeInputIterator end()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:64</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a99e8c7f90bbc5cb2790ee4952680cbe6"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a99e8c7f90bbc5cb2790ee4952680cbe6">graph::EdgeInputIterator::operator++</a></div><div class="ttdeci">EdgeInputIterator operator++(int)</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:41</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_aa049aaf09c3575dd458fbacd1b01bf27"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#aa049aaf09c3575dd458fbacd1b01bf27">graph::EdgeInputIterator::operator-&gt;</a></div><div class="ttdeci">EdgePtr operator-&gt;()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:29</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_ae3f4e8ca9309fa95ccda9cf0012d41bc"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#ae3f4e8ca9309fa95ccda9cf0012d41bc">graph::EdgeInputIterator::operator*</a></div><div class="ttdeci">EdgePtr operator*()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:24</div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_aebf1ed2eb98f0376bcd00afdc98a93eb"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#aebf1ed2eb98f0376bcd00afdc98a93eb">graph::EdgeInputIterator::operator==</a></div><div class="ttdeci">bool operator==(const EdgeInputIterator &amp;it) const</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:50</div></div>
+<div class="ttc" id="aEdge_8hpp_html"><div class="ttname"><a href="Edge_8hpp.html">Edge.hpp</a></div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html">graph::EdgeInputIterator</a></div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:14</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a72171a29e913a9c6d8ec8d3b7dad921d"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a72171a29e913a9c6d8ec8d3b7dad921d">graph::EdgeInputIterator::operator++</a></div><div class="ttdeci">EdgeInputIterator operator++()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:36</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a7ed04dbcf4be4391f93bbf9d3114296c"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a7ed04dbcf4be4391f93bbf9d3114296c">graph::EdgeInputIterator::operator!=</a></div><div class="ttdeci">bool operator!=(const EdgeInputIterator &amp;it) const</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:61</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a871bc8910e7d05108da0e1d191dfa549"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a871bc8910e7d05108da0e1d191dfa549">graph::EdgeInputIterator::EdgeInputIterator</a></div><div class="ttdeci">EdgeInputIterator(EdgeReaderPtr reader)</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:21</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a91e3fd46699d088d54892f6a4a949fc8"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8">graph::EdgeInputIterator::end</a></div><div class="ttdeci">static EdgeInputIterator end()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:66</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_a99e8c7f90bbc5cb2790ee4952680cbe6"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#a99e8c7f90bbc5cb2790ee4952680cbe6">graph::EdgeInputIterator::operator++</a></div><div class="ttdeci">EdgeInputIterator operator++(int)</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:43</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_aa049aaf09c3575dd458fbacd1b01bf27"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#aa049aaf09c3575dd458fbacd1b01bf27">graph::EdgeInputIterator::operator-&gt;</a></div><div class="ttdeci">EdgePtr operator-&gt;()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:31</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_ae3f4e8ca9309fa95ccda9cf0012d41bc"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#ae3f4e8ca9309fa95ccda9cf0012d41bc">graph::EdgeInputIterator::operator*</a></div><div class="ttdeci">EdgePtr operator*()</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:26</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeInputIterator_html_aebf1ed2eb98f0376bcd00afdc98a93eb"><div class="ttname"><a href="classgraph_1_1EdgeInputIterator.html#aebf1ed2eb98f0376bcd00afdc98a93eb">graph::EdgeInputIterator::operator==</a></div><div class="ttdeci">bool operator==(const EdgeInputIterator &amp;it) const</div><div class="ttdef"><b>Definition:</b> EdgeInputIterator.hpp:52</div></div>
 <div class="ttc" id="anamespacegraph_html"><div class="ttname"><a href="namespacegraph.html">graph</a></div><div class="ttdef"><b>Definition:</b> Edge.hpp:9</div></div>
-<div class="ttc" id="anamespacegraph_html_aaf61441c9361776fdc259c366f40cabf"><div class="ttname"><a href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">graph::EdgeReaderPtr</a></div><div class="ttdeci">std::shared_ptr&lt; EdgeReader &gt; EdgeReaderPtr</div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:16</div></div>
+<div class="ttc" id="anamespacegraph_html_aaf61441c9361776fdc259c366f40cabf"><div class="ttname"><a href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">graph::EdgeReaderPtr</a></div><div class="ttdeci">std::shared_ptr&lt; EdgeReader &gt; EdgeReaderPtr</div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:18</div></div>
 <div class="ttc" id="anamespacegraph_html_adf1945dfd55125182edc6e2075c1647a"><div class="ttname"><a href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">graph::EdgePtr</a></div><div class="ttdeci">std::shared_ptr&lt; Edge &gt; EdgePtr</div><div class="ttdef"><b>Definition:</b> Edge.hpp:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

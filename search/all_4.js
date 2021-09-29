@@ -30,5 +30,5 @@ var searchData=
   ['edgewriter_2ehpp_58',['EdgeWriter.hpp',['../EdgeWriter_8hpp.html',1,'']]],
   ['edgewriterptr_59',['EdgeWriterPtr',['../namespacegraph.html#af652bfc07c5df7c1bafa2a69752db431',1,'graph']]],
   ['end_60',['end',['../classgraph_1_1EdgeInputIterator.html#a91e3fd46699d088d54892f6a4a949fc8',1,'graph::EdgeInputIterator::end()'],['../classgraph_1_1EdgeIterable.html#a052a50fdfd6e58bb127b69a28044cdf0',1,'graph::EdgeIterable::end()']]],
-  ['error_61',['ERROR',['../classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa25de8bc19e7de8d61996e27c906dacd7',1,'logger::LogEntry']]]
+  ['error_61',['ERROR',['../namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601',1,'logger']]]
 ];

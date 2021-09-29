@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verbose_299',['VERBOSE',['../classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa750aab741e3cfd4476d879aeed6a6f60',1,'logger::LogEntry']]]
+  ['verbose_322',['VERBOSE',['../namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aba5d1d7b7fe63005af7397e4da50fcb1',1,'logger']]]
 ];

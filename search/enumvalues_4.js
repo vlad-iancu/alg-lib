@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warn_300',['WARN',['../classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fadeb7e4f14a533e8fef7650b134cabf93',1,'logger::LogEntry']]]
+  ['warn_323',['WARN',['../namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a2940a0bbacb439af8eda03b78ec12ffb',1,'logger']]]
 ];

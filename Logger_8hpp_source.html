@@ -75,43 +75,49 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="LogEntry_8hpp.html">LogEntry.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="LogFormatter_8hpp.html">formatter/LogFormatter.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacelogger.html">logger</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classlogger_1_1Logger.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classlogger_1_1Logger.html">Logger</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::set&lt;Domain&gt; domain_filters;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::set&lt;Component&gt; component_filters;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::set&lt;LogEntry::LogLevel&gt; level_filters;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classlogger_1_1Logger.html#ad84e62c9e7ddce320ce2b83e8f10f86a">   20</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#ad84e62c9e7ddce320ce2b83e8f10f86a">consume_log</a>(<a class="code" href="namespacelogger.html#ab5edff4ff4d6b6a0f3078f99e2d0a05a">LogEntryCPtr</a> entry) = 0;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#ab2c86a08cbfc084037ec6eac20e966bf">log</a>(<a class="code" href="namespacelogger.html#ab5edff4ff4d6b6a0f3078f99e2d0a05a">LogEntryCPtr</a> entry);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#a51a70730bb1b25861b8c404535cb6159">add_component_filter</a>(<span class="keyword">const</span> <a class="code" href="namespacelogger.html#a60e617b58fe3d7bdc0dc1e3164891753">Component</a> &amp;filter);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#a88bed9a726f3addd990865f0a4603277">add_domain_filter</a>(<span class="keyword">const</span> <a class="code" href="namespacelogger.html#ae875e3bc5772a65fce3160dc81bd3adc">Domain</a> &amp;filter);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#af05a6819be37bb9ca562448bb755610c">add_level_filter</a>(<span class="keyword">const</span> <a class="code" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">LogEntry::LogLevel</a> &amp;filter);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    };</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <span class="comment">// namespace logger</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="LogLevel_8hpp.html">LogLevel.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="LogFormatter_8hpp.html">formatter/LogFormatter.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacelogger.html">logger</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classlogger_1_1Logger.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classlogger_1_1Logger.html">Logger</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::set&lt;Domain&gt; domain_filters;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::set&lt;Component&gt; component_filters;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::set&lt;logger::LogLevel&gt; level_filters;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classlogger_1_1Logger.html#ad84e62c9e7ddce320ce2b83e8f10f86a">   22</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#ad84e62c9e7ddce320ce2b83e8f10f86a">consume_log</a>(<a class="code" href="namespacelogger.html#ab5edff4ff4d6b6a0f3078f99e2d0a05a">LogEntryCPtr</a> entry) = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#ab2c86a08cbfc084037ec6eac20e966bf">log</a>(<a class="code" href="namespacelogger.html#ab5edff4ff4d6b6a0f3078f99e2d0a05a">LogEntryCPtr</a> entry);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#a51a70730bb1b25861b8c404535cb6159">add_component_filter</a>(<span class="keyword">const</span> <a class="code" href="namespacelogger.html#a60e617b58fe3d7bdc0dc1e3164891753">Component</a> &amp;filter);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#a88bed9a726f3addd990865f0a4603277">add_domain_filter</a>(<span class="keyword">const</span> <a class="code" href="namespacelogger.html#ae875e3bc5772a65fce3160dc81bd3adc">Domain</a> &amp;filter);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classlogger_1_1Logger.html#a597d76b1512c9a2fb4591f17a277c505">add_level_filter</a>(<span class="keyword">const</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">logger::LogLevel</a> &amp;filter);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">   31</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;Logger&gt; <a class="code" href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">LoggerPtr</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <span class="comment">// namespace logger</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aLogEntry_8hpp_html"><div class="ttname"><a href="LogEntry_8hpp.html">LogEntry.hpp</a></div></div>
 <div class="ttc" id="aLogFormatter_8hpp_html"><div class="ttname"><a href="LogFormatter_8hpp.html">LogFormatter.hpp</a></div></div>
-<div class="ttc" id="aclasslogger_1_1LogEntry_html_add4d88f17e6db7914fe95faaa7a0750f"><div class="ttname"><a href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">logger::LogEntry::LogLevel</a></div><div class="ttdeci">LogLevel</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:33</div></div>
-<div class="ttc" id="aclasslogger_1_1Logger_html"><div class="ttname"><a href="classlogger_1_1Logger.html">logger::Logger</a></div><div class="ttdef"><b>Definition:</b> Logger.hpp:13</div></div>
+<div class="ttc" id="aLogLevel_8hpp_html"><div class="ttname"><a href="LogLevel_8hpp.html">LogLevel.hpp</a></div></div>
+<div class="ttc" id="aclasslogger_1_1Logger_html"><div class="ttname"><a href="classlogger_1_1Logger.html">logger::Logger</a></div><div class="ttdef"><b>Definition:</b> Logger.hpp:15</div></div>
 <div class="ttc" id="aclasslogger_1_1Logger_html_a51a70730bb1b25861b8c404535cb6159"><div class="ttname"><a href="classlogger_1_1Logger.html#a51a70730bb1b25861b8c404535cb6159">logger::Logger::add_component_filter</a></div><div class="ttdeci">void add_component_filter(const Component &amp;filter)</div><div class="ttdef"><b>Definition:</b> Logger.cpp:5</div></div>
+<div class="ttc" id="aclasslogger_1_1Logger_html_a597d76b1512c9a2fb4591f17a277c505"><div class="ttname"><a href="classlogger_1_1Logger.html#a597d76b1512c9a2fb4591f17a277c505">logger::Logger::add_level_filter</a></div><div class="ttdeci">void add_level_filter(const logger::LogLevel &amp;filter)</div><div class="ttdef"><b>Definition:</b> Logger.cpp:15</div></div>
 <div class="ttc" id="aclasslogger_1_1Logger_html_a88bed9a726f3addd990865f0a4603277"><div class="ttname"><a href="classlogger_1_1Logger.html#a88bed9a726f3addd990865f0a4603277">logger::Logger::add_domain_filter</a></div><div class="ttdeci">void add_domain_filter(const Domain &amp;filter)</div><div class="ttdef"><b>Definition:</b> Logger.cpp:10</div></div>
 <div class="ttc" id="aclasslogger_1_1Logger_html_ab2c86a08cbfc084037ec6eac20e966bf"><div class="ttname"><a href="classlogger_1_1Logger.html#ab2c86a08cbfc084037ec6eac20e966bf">logger::Logger::log</a></div><div class="ttdeci">void log(LogEntryCPtr entry)</div><div class="ttdef"><b>Definition:</b> Logger.cpp:22</div></div>
 <div class="ttc" id="aclasslogger_1_1Logger_html_ad84e62c9e7ddce320ce2b83e8f10f86a"><div class="ttname"><a href="classlogger_1_1Logger.html#ad84e62c9e7ddce320ce2b83e8f10f86a">logger::Logger::consume_log</a></div><div class="ttdeci">virtual void consume_log(LogEntryCPtr entry)=0</div></div>
-<div class="ttc" id="aclasslogger_1_1Logger_html_af05a6819be37bb9ca562448bb755610c"><div class="ttname"><a href="classlogger_1_1Logger.html#af05a6819be37bb9ca562448bb755610c">logger::Logger::add_level_filter</a></div><div class="ttdeci">void add_level_filter(const LogEntry::LogLevel &amp;filter)</div><div class="ttdef"><b>Definition:</b> Logger.cpp:15</div></div>
 <div class="ttc" id="anamespacelogger_html"><div class="ttname"><a href="namespacelogger.html">logger</a></div><div class="ttdef"><b>Definition:</b> ConsoleLogger.hpp:8</div></div>
-<div class="ttc" id="anamespacelogger_html_a60e617b58fe3d7bdc0dc1e3164891753"><div class="ttname"><a href="namespacelogger.html#a60e617b58fe3d7bdc0dc1e3164891753">logger::Component</a></div><div class="ttdeci">std::string Component</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:13</div></div>
-<div class="ttc" id="anamespacelogger_html_ab5edff4ff4d6b6a0f3078f99e2d0a05a"><div class="ttname"><a href="namespacelogger.html#ab5edff4ff4d6b6a0f3078f99e2d0a05a">logger::LogEntryCPtr</a></div><div class="ttdeci">std::shared_ptr&lt; const LogEntry &gt; LogEntryCPtr</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:81</div></div>
-<div class="ttc" id="anamespacelogger_html_ae875e3bc5772a65fce3160dc81bd3adc"><div class="ttname"><a href="namespacelogger.html#ae875e3bc5772a65fce3160dc81bd3adc">logger::Domain</a></div><div class="ttdeci">std::string Domain</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:12</div></div>
+<div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">logger::LogLevel</a></div><div class="ttdeci">LogLevel</div><div class="ttdef"><b>Definition:</b> LogLevel.hpp:8</div></div>
+<div class="ttc" id="anamespacelogger_html_a60e617b58fe3d7bdc0dc1e3164891753"><div class="ttname"><a href="namespacelogger.html#a60e617b58fe3d7bdc0dc1e3164891753">logger::Component</a></div><div class="ttdeci">std::string Component</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:14</div></div>
+<div class="ttc" id="anamespacelogger_html_a61f00d3c7772f53752ce3ab937e07578"><div class="ttname"><a href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">logger::LoggerPtr</a></div><div class="ttdeci">std::shared_ptr&lt; Logger &gt; LoggerPtr</div><div class="ttdef"><b>Definition:</b> Logger.hpp:31</div></div>
+<div class="ttc" id="anamespacelogger_html_ab5edff4ff4d6b6a0f3078f99e2d0a05a"><div class="ttname"><a href="namespacelogger.html#ab5edff4ff4d6b6a0f3078f99e2d0a05a">logger::LogEntryCPtr</a></div><div class="ttdeci">std::shared_ptr&lt; const LogEntry &gt; LogEntryCPtr</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:76</div></div>
+<div class="ttc" id="anamespacelogger_html_ae875e3bc5772a65fce3160dc81bd3adc"><div class="ttname"><a href="namespacelogger.html#ae875e3bc5772a65fce3160dc81bd3adc">logger::Domain</a></div><div class="ttdeci">std::string Domain</div><div class="ttdef"><b>Definition:</b> LogEntry.hpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

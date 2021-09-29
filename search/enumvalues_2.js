@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['panic_298',['PANIC',['../classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa482afe724a6a683b63e020e60bbf021c',1,'logger::LogEntry']]]
+  ['panic_321',['PANIC',['../namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a4c33c193f768d2618c49404fcd380af9',1,'logger']]]
 ];

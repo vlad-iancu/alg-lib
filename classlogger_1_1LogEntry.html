@@ -66,7 +66,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classlogger_1_1LogEntry-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -76,25 +75,12 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="LogEntry_8hpp_source.html">LogEntry.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:add4d88f17e6db7914fe95faaa7a0750f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">LogLevel</a> { <br />
-&#160;&#160;<a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa551e6e65e6c8ae8a4773671005ac253a">INFO</a> = 0
-, <a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fadeb7e4f14a533e8fef7650b134cabf93">WARN</a> = 1
-, <a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa750aab741e3cfd4476d879aeed6a6f60">VERBOSE</a> = 2
-, <a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa25de8bc19e7de8d61996e27c906dacd7">ERROR</a> = 3
-, <br />
-&#160;&#160;<a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750fa482afe724a6a683b63e020e60bbf021c">PANIC</a> = 4
-<br />
- }</td></tr>
-<tr class="separator:add4d88f17e6db7914fe95faaa7a0750f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac3a07a4a89815a50def16b47a8a92578"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#ac3a07a4a89815a50def16b47a8a92578">LogEntry</a> (<a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">LogLevel</a> _level, std::string _domain, std::string _component, std::string _filename, int _line, <a class="el" href="namespacelogger.html#a2e40aba7212c34b9623328617263a900">Timestamp</a> _timestamp=std::chrono::steady_clock::now())</td></tr>
-<tr class="separator:ac3a07a4a89815a50def16b47a8a92578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c60837bc88d95e27ea0a07d62a6826f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#a8c60837bc88d95e27ea0a07d62a6826f">level</a> () const</td></tr>
-<tr class="separator:a8c60837bc88d95e27ea0a07d62a6826f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6775c13c8273ca26c686d12698bbdb75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#a6775c13c8273ca26c686d12698bbdb75">LogEntry</a> (<a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> _level, std::string _domain, std::string _component, std::string _filename, int _line, const std::string &amp;_message, <a class="el" href="namespacelogger.html#a2e40aba7212c34b9623328617263a900">Timestamp</a> _timestamp=std::chrono::steady_clock::now())</td></tr>
+<tr class="separator:a6775c13c8273ca26c686d12698bbdb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeab0f3b77bb1713edae0a195295ddd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#afeab0f3b77bb1713edae0a195295ddd9">level</a> () const</td></tr>
+<tr class="separator:afeab0f3b77bb1713edae0a195295ddd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f3a2f3e3937e87cf6bc8a3fb5f93591"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelogger.html#ae875e3bc5772a65fce3160dc81bd3adc">Domain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#a1f3a2f3e3937e87cf6bc8a3fb5f93591">domain</a> () const</td></tr>
 <tr class="separator:a1f3a2f3e3937e87cf6bc8a3fb5f93591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39cc8a44cba15a056c5e927b3eeb39de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelogger.html#a60e617b58fe3d7bdc0dc1e3164891753">Component</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#a39cc8a44cba15a056c5e927b3eeb39de">component</a> () const</td></tr>
@@ -105,32 +91,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9c33cda5d036bab75d398ea1b430488c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33e8bd18f11c85c92582ced0d24b7306"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#a33e8bd18f11c85c92582ced0d24b7306">level_str</a> () const</td></tr>
 <tr class="separator:a33e8bd18f11c85c92582ced0d24b7306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4983ae7ca8fece96bd726a63f521cc76"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1LogEntry.html#a4983ae7ca8fece96bd726a63f521cc76">message</a> () const</td></tr>
+<tr class="separator:a4983ae7ca8fece96bd726a63f521cc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="add4d88f17e6db7914fe95faaa7a0750f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add4d88f17e6db7914fe95faaa7a0750f">&#9670;&nbsp;</a></span>LogLevel</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">logger::LogEntry::LogLevel</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="add4d88f17e6db7914fe95faaa7a0750fa551e6e65e6c8ae8a4773671005ac253a"></a>INFO&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="add4d88f17e6db7914fe95faaa7a0750fadeb7e4f14a533e8fef7650b134cabf93"></a>WARN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="add4d88f17e6db7914fe95faaa7a0750fa750aab741e3cfd4476d879aeed6a6f60"></a>VERBOSE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="add4d88f17e6db7914fe95faaa7a0750fa25de8bc19e7de8d61996e27c906dacd7"></a>ERROR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="add4d88f17e6db7914fe95faaa7a0750fa482afe724a6a683b63e020e60bbf021c"></a>PANIC&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac3a07a4a89815a50def16b47a8a92578"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3a07a4a89815a50def16b47a8a92578">&#9670;&nbsp;</a></span>LogEntry()</h2>
+<a id="a6775c13c8273ca26c686d12698bbdb75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6775c13c8273ca26c686d12698bbdb75">&#9670;&nbsp;</a></span>LogEntry()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +107,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">logger::LogEntry::LogEntry </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">LogLevel</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a>&#160;</td>
           <td class="paramname"><em>_level</em>, </td>
         </tr>
         <tr>
@@ -167,6 +133,12 @@ Public Member Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>_line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -241,14 +213,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8c60837bc88d95e27ea0a07d62a6826f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c60837bc88d95e27ea0a07d62a6826f">&#9670;&nbsp;</a></span>level()</h2>
+<a id="afeab0f3b77bb1713edae0a195295ddd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeab0f3b77bb1713edae0a195295ddd9">&#9670;&nbsp;</a></span>level()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classlogger_1_1LogEntry.html#add4d88f17e6db7914fe95faaa7a0750f">LogEntry::LogLevel</a> logger::LogEntry::level </td>
+          <td class="memname"><a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> logger::LogEntry::level </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -283,6 +255,23 @@ Public Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int logger::LogEntry::line </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4983ae7ca8fece96bd726a63f521cc76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4983ae7ca8fece96bd726a63f521cc76">&#9670;&nbsp;</a></span>message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string logger::LogEntry::message </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

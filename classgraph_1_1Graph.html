@@ -136,7 +136,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a03069f34f5a1274e224dd53ac1634c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract data structure for a graph </p>
+<div class="textblock"><p>Abstract base class that serves creating graphs.</p>
+<p>In order to create a custom <a class="el" href="classgraph_1_1Graph.html">Graph</a>, the user has to implement: get_neighbors(Node u) get_interior_neighbors(Node u) get_neighbor_edges(Node u) get_interior_edges(Node u) <a class="el" href="classgraph_1_1Graph.html#ad9a05ee8bd0575d4d8f8f6b92d2039fe">edge_iterator()</a> <a class="el" href="classgraph_1_1Graph.html#a52c563bb34f6bcff7adff47a4ce99b00">add_edge(Node u, Node v, bool)</a> has_edge(Node u, Node v) <a class="el" href="classgraph_1_1Graph.html#a216c8e84d01d41f1394a195f70b867ea">remove_edge(Node u, Node v, bool)</a> <a class="el" href="classgraph_1_1Graph.html#afbaf36e23320cab32bdc2ef784be225c">edges()</a> <a class="el" href="classgraph_1_1Graph.html#a37a8f967b3dcd312dead6cd104400c4b">insert_edge(EdgePtr, bool)</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a091d3e4717676f11373c791779c4fa34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a091d3e4717676f11373c791779c4fa34">&#9670;&nbsp;</a></span>Graph() <span class="overload">[1/4]</span></h2>

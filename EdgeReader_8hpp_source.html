@@ -73,39 +73,41 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ALG_LIB_DATA_STRUCTURE_EDGE_READER_PROVIDER_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Edge_8hpp.html">edge/Edge.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegraph.html">graph</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgraph_1_1EdgeReader.html">EdgeReader</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html#a731132e601eaaff64becc3b26d69eb86">   11</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeReader.html#a731132e601eaaff64becc3b26d69eb86">increment</a>() = 0;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html#aef4484d343e1cf8ffae80056b9eb1177">   12</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">EdgePtr</a> <a class="code" href="classgraph_1_1EdgeReader.html#aef4484d343e1cf8ffae80056b9eb1177">current_edge</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html#a2244ad27e545b04d7a7720ec1cd01c5e">   13</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeReader.html#a2244ad27e545b04d7a7720ec1cd01c5e">can_read</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    };</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">   16</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;EdgeReader&gt; <a class="code" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">EdgeReaderPtr</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Edge_8hpp.html">edge/Edge.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegraph.html">graph</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgraph_1_1EdgeReader.html">EdgeReader</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html#a731132e601eaaff64becc3b26d69eb86">   13</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeReader.html#a731132e601eaaff64becc3b26d69eb86">increment</a>() = 0;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html#aef4484d343e1cf8ffae80056b9eb1177">   14</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">EdgePtr</a> <a class="code" href="classgraph_1_1EdgeReader.html#aef4484d343e1cf8ffae80056b9eb1177">current_edge</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classgraph_1_1EdgeReader.html#a2244ad27e545b04d7a7720ec1cd01c5e">   15</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classgraph_1_1EdgeReader.html#a2244ad27e545b04d7a7720ec1cd01c5e">can_read</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classgraph_1_1invalid__edge__count.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgraph_1_1invalid__edge__count.html">invalid_edge_count</a> : std::exception</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classgraph_1_1invalid__edge__count.html#abe67d78a5f1d0da28fbf3d2358b2222c">   21</a></span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classgraph_1_1invalid__edge__count.html#abe67d78a5f1d0da28fbf3d2358b2222c">what</a>() const noexcept</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&quot;The edge count must be a non-negative integer&quot;</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">   18</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;EdgeReader&gt; <a class="code" href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">EdgeReaderPtr</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classgraph_1_1invalid__edge__count.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgraph_1_1invalid__edge__count.html">invalid_edge_count</a> : std::exception</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classgraph_1_1invalid__edge__count.html#abe67d78a5f1d0da28fbf3d2358b2222c">   23</a></span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classgraph_1_1invalid__edge__count.html#abe67d78a5f1d0da28fbf3d2358b2222c">what</a>() const noexcept</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&quot;The edge count must be a non-negative integer&quot;</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aEdge_8hpp_html"><div class="ttname"><a href="Edge_8hpp.html">Edge.hpp</a></div></div>
-<div class="ttc" id="aclassgraph_1_1EdgeReader_html"><div class="ttname"><a href="classgraph_1_1EdgeReader.html">graph::EdgeReader</a></div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:9</div></div>
+<div class="ttc" id="aclassgraph_1_1EdgeReader_html"><div class="ttname"><a href="classgraph_1_1EdgeReader.html">graph::EdgeReader</a></div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:11</div></div>
 <div class="ttc" id="aclassgraph_1_1EdgeReader_html_a2244ad27e545b04d7a7720ec1cd01c5e"><div class="ttname"><a href="classgraph_1_1EdgeReader.html#a2244ad27e545b04d7a7720ec1cd01c5e">graph::EdgeReader::can_read</a></div><div class="ttdeci">virtual bool can_read() const =0</div></div>
 <div class="ttc" id="aclassgraph_1_1EdgeReader_html_a731132e601eaaff64becc3b26d69eb86"><div class="ttname"><a href="classgraph_1_1EdgeReader.html#a731132e601eaaff64becc3b26d69eb86">graph::EdgeReader::increment</a></div><div class="ttdeci">virtual bool increment()=0</div></div>
 <div class="ttc" id="aclassgraph_1_1EdgeReader_html_aef4484d343e1cf8ffae80056b9eb1177"><div class="ttname"><a href="classgraph_1_1EdgeReader.html#aef4484d343e1cf8ffae80056b9eb1177">graph::EdgeReader::current_edge</a></div><div class="ttdeci">virtual EdgePtr current_edge() const =0</div></div>
-<div class="ttc" id="aclassgraph_1_1invalid__edge__count_html"><div class="ttname"><a href="classgraph_1_1invalid__edge__count.html">graph::invalid_edge_count</a></div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:19</div></div>
-<div class="ttc" id="aclassgraph_1_1invalid__edge__count_html_abe67d78a5f1d0da28fbf3d2358b2222c"><div class="ttname"><a href="classgraph_1_1invalid__edge__count.html#abe67d78a5f1d0da28fbf3d2358b2222c">graph::invalid_edge_count::what</a></div><div class="ttdeci">virtual const char * what() const noexcept</div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:21</div></div>
+<div class="ttc" id="aclassgraph_1_1invalid__edge__count_html"><div class="ttname"><a href="classgraph_1_1invalid__edge__count.html">graph::invalid_edge_count</a></div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:21</div></div>
+<div class="ttc" id="aclassgraph_1_1invalid__edge__count_html_abe67d78a5f1d0da28fbf3d2358b2222c"><div class="ttname"><a href="classgraph_1_1invalid__edge__count.html#abe67d78a5f1d0da28fbf3d2358b2222c">graph::invalid_edge_count::what</a></div><div class="ttdeci">virtual const char * what() const noexcept</div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:23</div></div>
 <div class="ttc" id="anamespacegraph_html"><div class="ttname"><a href="namespacegraph.html">graph</a></div><div class="ttdef"><b>Definition:</b> Edge.hpp:9</div></div>
-<div class="ttc" id="anamespacegraph_html_aaf61441c9361776fdc259c366f40cabf"><div class="ttname"><a href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">graph::EdgeReaderPtr</a></div><div class="ttdeci">std::shared_ptr&lt; EdgeReader &gt; EdgeReaderPtr</div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:16</div></div>
+<div class="ttc" id="anamespacegraph_html_aaf61441c9361776fdc259c366f40cabf"><div class="ttname"><a href="namespacegraph.html#aaf61441c9361776fdc259c366f40cabf">graph::EdgeReaderPtr</a></div><div class="ttdeci">std::shared_ptr&lt; EdgeReader &gt; EdgeReaderPtr</div><div class="ttdef"><b>Definition:</b> EdgeReader.hpp:18</div></div>
 <div class="ttc" id="anamespacegraph_html_adf1945dfd55125182edc6e2075c1647a"><div class="ttname"><a href="namespacegraph.html#adf1945dfd55125182edc6e2075c1647a">graph::EdgePtr</a></div><div class="ttdeci">std::shared_ptr&lt; Edge &gt; EdgePtr</div><div class="ttdef"><b>Definition:</b> Edge.hpp:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
