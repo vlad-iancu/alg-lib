@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7eadjacencylist_296',['~AdjacencyList',['../classgraph_1_1AdjacencyList.html#ade038cfd34d837f630cb2fe4315db83c',1,'graph::AdjacencyList']]],
-  ['_7eadjacencymatrix_297',['~AdjacencyMatrix',['../classgraph_1_1AdjacencyMatrix.html#a1a1f32e1316359b2aa7a34685d917632',1,'graph::AdjacencyMatrix']]]
+  ['_7eadjacencylist_297',['~AdjacencyList',['../classgraph_1_1AdjacencyList.html#ade038cfd34d837f630cb2fe4315db83c',1,'graph::AdjacencyList']]],
+  ['_7eadjacencymatrix_298',['~AdjacencyMatrix',['../classgraph_1_1AdjacencyMatrix.html#a1a1f32e1316359b2aa7a34685d917632',1,'graph::AdjacencyMatrix']]]
 ];

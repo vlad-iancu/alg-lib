@@ -66,7 +66,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">LogManager.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -79,8 +80,15 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a044731011a7bd20dd1be36fc3e7359d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LogManager_8cpp.html#a044731011a7bd20dd1be36fc3e7359d5">register_logger</a> (<a class="el" href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">logger::LoggerPtr</a> logger)</td></tr>
+<tr class="separator:a044731011a7bd20dd1be36fc3e7359d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35965073ec17fb191afe1264bf4b4076"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LogManager_8cpp.html#a35965073ec17fb191afe1264bf4b4076">log_m</a> (<a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">logger::LogLevel</a> level, const std::string &amp;domain, const std::string &amp;component, const char *file, int line, const std::string &amp;fmt,...)</td></tr>
 <tr class="separator:a35965073ec17fb191afe1264bf4b4076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4dac2d8e0e9f63f0bd52861720a7e5b0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">logger::LoggerPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LogManager_8cpp.html#a4dac2d8e0e9f63f0bd52861720a7e5b0">g_loggers</a></td></tr>
+<tr class="separator:a4dac2d8e0e9f63f0bd52861720a7e5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a35965073ec17fb191afe1264bf4b4076"></a>
@@ -135,6 +143,39 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a044731011a7bd20dd1be36fc3e7359d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a044731011a7bd20dd1be36fc3e7359d5">&#9670;&nbsp;</a></span>register_logger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void register_logger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">logger::LoggerPtr</a>&#160;</td>
+          <td class="paramname"><em>logger</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4dac2d8e0e9f63f0bd52861720a7e5b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dac2d8e0e9f63f0bd52861720a7e5b0">&#9670;&nbsp;</a></span>g_loggers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="namespacelogger.html#a61f00d3c7772f53752ce3ab937e07578">logger::LoggerPtr</a>&gt; g_loggers</td>
         </tr>
       </table>
 </div><div class="memdoc">

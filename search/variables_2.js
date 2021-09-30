@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['to_300',['to',['../structgraph_1_1Edge.html#a5cdbe914171bfeeff3690ec4259e4025',1,'graph::Edge']]]
+  ['node_5fcount_301',['node_count',['../classgraph_1_1Graph.html#a03069f34f5a1274e224dd53ac1634c21',1,'graph::Graph']]]
 ];

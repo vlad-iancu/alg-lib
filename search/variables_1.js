@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node_5fcount_299',['node_count',['../classgraph_1_1Graph.html#a03069f34f5a1274e224dd53ac1634c21',1,'graph::Graph']]]
+  ['g_5floggers_300',['g_loggers',['../LogManager_8cpp.html#a4dac2d8e0e9f63f0bd52861720a7e5b0',1,'LogManager.cpp']]]
 ];
