@@ -5,6 +5,13 @@
 #include <cstdarg>
 #include <chrono>
 
+std::vector<logger::LoggerPtr> g_loggers;
+
+void register_logger(logger::LoggerPtr logger)
+{
+    g_loggers.push_back(logger);
+}
+
 void log_m(logger::LogLevel level, const std::string &domain, const std::string &component, const char *file, int line, const std::string &fmt, ...)
 {
 
@@ -20,8 +27,12 @@ void log_m(logger::LogLevel level, const std::string &domain, const std::string 
     vsprintf(msg, fmt.c_str(), args2);
     va_end(args2);
 
-    logger::LogEntry entry(
-        level, domain, component, std::string(file), line, msg, std::chrono::steady_clock::now()
-    );
+    std::string message(msg);
     
+    logger::LogEntryCPtr entry = std::make_shared<logger::LogEntry>(
+        level, domain, component, std::string(file), line, message, std::chrono::steady_clock::now());
+    for (auto logger : g_loggers)
+    {
+        logger->log(entry);
+    }
 }
